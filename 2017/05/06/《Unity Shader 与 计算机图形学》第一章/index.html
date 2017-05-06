@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="moumao">
+    <meta name="description" content="欢迎来到某猫のBlog,我是moumao,希望你能喜欢我的小站">
+  <title>Winshare</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="https://cdn.bootcss.com/materialize/0.98.2/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/Vateral.min.css">
+    
+  
+  
+</head>
+<body>
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+<a data-activates="slide-out"  class="button-collapse"><div class="nav-btn"><i class="material-icons">list</i></div></a>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav">
+          <div class="nav-header"  style="background-image: url(http://img2.niutuku.com/desk/1207/1149/bizhi-1149-54201.jpg)">
+              <!--<img id="headbg" src="http://img2.niutuku.com/desk/1207/1149/bizhi-1149-54201.jpg" ondragstart="return false;">-->
+              <div class="header-box"><img src="https://avatars0.githubusercontent.com/u/11496629?v=3&amp;u=bd77e11ace7464d1ac8cf1a66cafd44c16a2694f&amp;s=400" ondragstart="return false;"></div>
+              <p>Tom winshare</p>
+              <div class="nav-link">
+                  
+                  <div class="link-box"><a  href="https://github.com/OOXXXXOO" target="_blank"><div class="link-box-img"><img src="/images/link/github.png" ondragstart="return false;"></div></a></div>
+                  
+
+                  
+                  <div class="link-box"><a href="http://example.com" target="_blank"><div class="link-box-img"><img src="/images/link/weibo.png" ondragstart="return false;"></div></a></div>
+                  
+
+                  
+                  <div class="link-box"><a href="http://example.com" target="_blank"> <div class="link-box-img"><img src="/images/link/zhihu.png" ondragstart="return false;"> </div></a></div>
+                  
+
+                  
+                  <div class="link-box"><a href="http://example.com" target="_blank"> <div class="link-box-img"><img src="/images/link/douban.png" ondragstart="return false;"> </div></a></div>
+                  
+
+              </div>
+              <div class="nav-search">
+                  <form id="search-form"> <!-- 搜索框相关 -->
+                      <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+                      <div class="nav-search-img"><i class="material-icons">search</i></div>
+                  </form>
+                  <div id="local-search-result"></div> <!-- 搜索结果区 -->
+                  <p class='no-result'>无搜索结果</p>
+              </div>
+          </div>
+
+          <!--Homepage-->
+          
+          <li class="nav-list">
+              <a href="/" target="_self">
+                  <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+              </a>
+          </li>
+          
+
+          <!--archives-->
+          
+          <li class="nav-list dropdown-btn">
+              <a  class=""  target="_self">
+                  <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><img src="/images/smalldown.png"></div>
+              </a>
+          </li>
+          
+          <ul class="dropdown-menu dropdown" >
+              <li class="nav-dropdown-list">
+                  <a class="archive-link" href="/archives/2017/05/">五月 2017<span class="archive-count">4</span></a>
+              </li>
+          </ul>
+
+          <!--categories-->
+          
+          <li class="nav-list dropdown-btn">
+              <a   class=""  target="_self">
+                  <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><img src="/images/smalldown.png"></div>
+              </a>
+          </li>
+          
+          <ul class="dropdown-menu dropdown" >
+              <li class="nav-dropdown-list">
+                  
+              </li>
+          </ul>
+
+          <!--tags-->
+          
+          <li class="nav-list">
+              <a href="/archives" target="_self">
+                  <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+              </a>
+          </li>
+          
+          <!--photo-->
+          
+          <li class="nav-list">
+              <a href="/photo" target="_self">
+                  <div class="nav-ico"><i class="material-icons">insert_photo</i> </div><p>影集</p>
+              </a>
+          </li>
+          
+          <!--friends-->
+          
+          <li class="nav-list">
+              <a href="/friends" target="_self">
+                  <div class="nav-ico"><i class="material-icons">face</i> </div><p>友链</p>
+              </a>
+          </li>
+          
+          <!--about-->
+          
+          <li class="nav-list">
+              <a href="/about" target="_self">
+                  <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
+              </a>
+          </li>
+          
+      </ul>
+  </div>
+</div>
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title" style="background-image:url(http://pic1.win4000.com/wallpaper/7/5826e67d07567.jpg)" >
+  <h2>unity &amp; Computer graphics Chapter(1)</h2>
+    
+  <p>作者:Tom winshare &nbsp&nbsp 发布于:<time datetime="2017-05-06T10:44:48.245Z">
+          2017-05-06
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><h2 id="入"><a href="#入" class="headerlink" title="入"></a>入</h2><h3 id="图形学"><a href="#图形学" class="headerlink" title="图形学"></a>图形学</h3><p>大坑这么久，看了不少书，却发现一个严重的问题。大部分时间在<strong>知其然不知其所以然</strong>。没有一篇文章从GPU讲到游戏引擎再到游戏。<br>这种自底向上的架构性的东西对于图形学程序员来说可谓至关重要  我初学的时候就无时不刻在为GPU怎么参与图形运算<br>shader是干吗的？ 管线是个什么鬼？  那些牛逼闪闪的demo效果为什么的那么好？</p>
+<hr>
+<h1 id="所以："><a href="#所以：" class="headerlink" title="所以："></a>所以：</h1><p>这个系列三篇文章将从GPU工作到绘图过程~从一个史诗级unity 官方demo的shader技术~最终清楚地描述<br>GPU/OPEN GL/D3D/Shader/管线/渲染器/实时渲染算法/等等一大堆名词之间的关系，最终，我们将分析unity和unreal的画质究竟为什么会有差异，并以一个工程来证明，unity的画质也可以很好。</p>
+<hr>
+<h1 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h1><p>本系列文章分为</p>
+<h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a><strong>硬件</strong></h3><h3 id="编程入门"><a href="#编程入门" class="headerlink" title="编程入门"></a><strong>编程入门</strong></h3><h3 id="工程实践"><a href="#工程实践" class="headerlink" title="工程实践"></a><strong>工程实践</strong></h3><blockquote>
+<p>因为硬件部分比较枯燥和陌生。所以如果对于硬件没有兴趣可以直接关注后续文章。本系列从2106年12月开始月更  在2017年2月之前更新完三篇</p>
+<h1 id="最底层——GPU-硬件原理"><a href="#最底层——GPU-硬件原理" class="headerlink" title="最底层——GPU/硬件原理"></a>最底层——<strong>GPU/硬件原理</strong></h1></blockquote>
+<p>硬件的工作原理其实简单理解起来用一个视频就能说明<br><a href="http://v.youku.com/v_show/id_XNjY3MTY4NjAw.html" target="_blank" rel="external">Mythbusters Demo GPU versus CPU</a><br>但是基于明确的说明  我们还是用Nvdia的文档来了解一下GPU的不同之处和工作机制<br><img src="http://img.blog.csdn.net/20161224171551069?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>这是现代典型GPU和CPU的不同之处  我们看到真正的计算单元也就是绿色的部分<br>GPU采用来大量的计算核心也就是Nvdia口中的Cuda核心来进行高数据密度的运算</p>
+<pre><code>#铺垫：
+</code></pre><p>先来了解计算机内部这些运算器控制器都是用来干嘛的~</p>
+<h4 id="1-ALU：Arithmetic-Logic-Unit-算数逻辑单元"><a href="#1-ALU：Arithmetic-Logic-Unit-算数逻辑单元" class="headerlink" title="1.ALU：Arithmetic Logic Unit 算数逻辑单元"></a><strong>1.ALU</strong>：Arithmetic Logic Unit 算数逻辑单元</h4><hr>
+<h4 id="大部分ALU都可以完成以下运算∶"><a href="#大部分ALU都可以完成以下运算∶" class="headerlink" title="大部分ALU都可以完成以下运算∶"></a>大部分ALU都可以完成以下运算∶</h4><p>　    　整数算术运算（加、减，有时还包括乘和除，不过成本较高）<br>　    　位逻辑运算（与、或、非、异或）<br>　    　移位运算（将一个字向左或向右移位或浮动特定位，而无符号延伸），移位可被认为是乘以2或除以 2。<br>　    　Alu可以说是计算机处理器的核心部件之一</p>
+<hr>
+<h4 id="2-Cache："><a href="#2-Cache：" class="headerlink" title="2.Cache："></a><strong>2.Cache</strong>：</h4><p>通常人们所说的Cache就是指缓存SRAM。 SRAM叫静态内存，“静态”指的是当我们将一笔数据写入SRAM后，除非重新写入新数据或关闭电源，否则写入的数据保持不变。<br>由于CPU的速度比内存和硬盘的速度要快得多，所以在存取数据时会使CPU等待，影响计算机的速度。SRAM的存取速度比其它内存和硬盘都要快，所以它被用作电脑的高速缓存(Cache)。</p>
+<h2 id="对于一个典型的CPU来说"><a href="#对于一个典型的CPU来说" class="headerlink" title="对于一个典型的CPU来说"></a>对于一个典型的CPU来说</h2><p><img src="http://img.blog.csdn.net/20161224180708421?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>Alu部分会很强大 可以在很少的时钟周期内完成算数计算<br>对于一个64bit双精度的CPU来说 浮点加法和乘法只需要1-3个时钟周期<br>而相比动辄2GHZ  10^9 的cpu来说对于逻辑和算数运算的处理能力就非常强了<br>大的cache也将延时降低很多 结合了现在的各种高级调节技术比如超线程  多核 等技术CPU对于复杂逻辑的运算能力得到了极大提升</p>
+<h2 id="对于典型的GPU来说"><a href="#对于典型的GPU来说" class="headerlink" title="对于典型的GPU来说"></a>对于典型的GPU来说</h2><p><img src="http://img.blog.csdn.net/20161224181140942?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="GPU"><br>ALU的数量会非常大  功能会更少 能耗很低 cache就会很小<br>这样带来的好处就是针对大吞吐量的需要简单计算的数据来说 处理效率就高了非常多。如果有很多线程需要访问同一个相同的数据，缓存会合并这些访问，然后再去访问dram（因为需要访问的数据保存在dram中而不是cache里面），获取数据后cache会转发这个数据给对应的线程，这个时候是数据转发的角色。但是由于需要访问dram，自然会带来延时的问题。</p>
+<p>GPU的控制单元（左边黄色区域块）可以把多个的访问合并成少的访问。</p>
+<p>GPU的虽然有dram延时，却有非常多的ALU和非常多线程. 为啦平衡内存延时的问题，我们可以中充分利用多的ALU的特性达到一个非常大的吞吐量的效果。尽可能多的分配多的线程.通常来看GPU ALU会有非常重的pipeline就是因为这样。</p>
+<h2 id="对比结构"><a href="#对比结构" class="headerlink" title="对比结构"></a>对比结构</h2><p>我们可以先得出一个简单结论，那就是。<strong>针对今天的显卡来说。更适合做高并行，高数据密度，简单逻辑的运算。</strong></p>
+<h2 id="然而"><a href="#然而" class="headerlink" title="然而"></a>然而</h2><p>在硬件上更进一步的架构中在这里Nvdia和AMD这两大家的方案技术路线不同 因此我们需要对比一下</p>
+<p>###在之前下面这段有几个概念说明：<br><strong>1.4D向量和4+1</strong><br>3D物件的成像過程中，VS（Vertex Shader，顶点着色引擎）&amp;PS（Pixel Shader，像素著色引擎）最主要的作用就是运算坐标（XYZW）@（RGBA）。此时数据的基本单位是scalar（标量），1个单位的变量操作，为1D标量简称1D。<br>而跟标量相對的就是vector（向量），向量是由多個标量构成。例如每個周期可执行4個向量平行运算，就称为4D向量架构。若GPU指令发射口只有1个，卻可執行4個数据的平行运算，这就是SIMD架构。</p>
+<p><img src="http://img.blog.csdn.net/20161226215803069?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="4D"></p>
+<hr>
+<p>后来这个架构变成了4+1结构</p>
+<p><strong>2.运算单元计算机制</strong><br>以GPU的矩阵加法为例：<br><img src="http://img.blog.csdn.net/20161227124821298?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="NVIDIA"><a href="#NVIDIA" class="headerlink" title="NVIDIA"></a><strong>NVIDIA</strong></h3><p>标注的是Stream Processing(流处理器)数量，<br>NVIDIA的流处理器每个都具有完整的ALU(可以理解为数学、逻辑等运算)。NVIDIA从G80以后采用全标量设计，所有运算全都转为标量计算。但是这么做一旦遇到4D矢量运算时，就需要4次运算才能完成，所以NVIDIA显卡的Shader频率几乎比核心频率高一倍，就是为了弥补这个缺点。<br>NV的流处理器都具有完整的ALU功能，所以每个流处理器消耗的晶体管数量较多，成本较高。在加上现在的CUDA功能所以晶体管数量大幅多于AMD-ATI。</p>
+<p>###　<strong>AMD/ATI</strong><br>标注的是Stream Processing Units(统一渲染单元)数量，也可以叫流处理器单元。<br>AMD-ATI从RV670以后，流处理器是5个固定的统一渲染单元为一组，4D矢量+1D标量组合。其中4个只能进行MADD(乘加)运算，1个可以进行超运算(函数等运算)。因为是5个固定为一组，不能拆分，所以遇到纯标量运算时就会有4个SPU处于闲置状态而无法加入其它SP组合协助运算。但换句话说如果分配得当让每个SPU都充分工作，那么AMD显卡的效率可是非常高的。这也是玩家公认A卡驱动提升性能比N卡要高，但也就是这个原因导致A卡驱动设计难度非常高，游戏想要为A卡优化的难度也一样很高。<br><img src="http://img.blog.csdn.net/20161226215942648?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>由于咱们主要讲软件  ALU CU这种数字逻辑部分的知识就不深入了  知道了硬件的区别<br>下面来看看他们的计算原理</p>
+<p>先来普及一个比较<strong>无关</strong>概念——<strong>波阵面（Wavefront）</strong></p>
+<p>波在传递过程中有振动相位 就像三角函数sin有波峰有波谷<br>当我们取波峰为标准相位  那么在一个波阵面上  就出现了sin的波峰构成的点<br>当我们在三维中考量这个问题  则出现类似于下面这种画面</p>
+<p><img src="http://img.blog.csdn.net/20161227115106564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>因此在一个波阵面中  其<strong>可能相互有关联关系</strong>  也就是根绝这个一区域可以推出下一区域<br><strong>但也可能没有关联关系</strong>我们可以想象将两块石头扔进水中  向远散去的波  并不受另一个石头的影响</p>
+<p>所以我们<strong>假定一个运算序列</strong><br><img src="http://img.blog.csdn.net/20161227120149686?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>假设有<strong>A～O共15个Wavefront</strong>，顺序是由A到O，且部分Wavefront存在相依性。其中C必须依赖B，也就是Wavefront C要等到Wavefront B运算完毕之後，才能算Wavefront C。类似B+2=4，B+C=6，必須先求得B m 的解才能解第二個方程式。其余E和F、F和G、L和K都是相同情況。</p>
+<p><strong>直接跳过落后架构VLIW4</strong> 其在多个周期出现了使用率低下的问题造成浪费<br>现在的4+1 <strong>VLIW5架构指令过程</strong>如下</p>
+<h4 id="周期1-BC相互依存-则："><a href="#周期1-BC相互依存-则：" class="headerlink" title="周期1 BC相互依存  则："></a><strong>周期1 BC相互依存  则：</strong></h4><p><img src="http://img.blog.csdn.net/20161227124058601?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="周期二：GF相互依存-则："><a href="#周期二：GF相互依存-则：" class="headerlink" title="周期二：GF相互依存 则："></a><strong>周期二：GF相互依存 则：</strong></h4><p><img src="http://img.blog.csdn.net/20161227124151852?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="周齐三：-LK互相依存-则："><a href="#周齐三：-LK互相依存-则：" class="headerlink" title="周齐三： LK互相依存 则："></a><strong>周齐三： LK互相依存 则：</strong></h4><p><img src="http://img.blog.csdn.net/20161227124318697?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="最后一个周期运算完毕"><a href="#最后一个周期运算完毕" class="headerlink" title="最后一个周期运算完毕"></a><strong>最后一个周期运算完毕</strong></h4><p><img src="http://img.blog.csdn.net/20161227124358854?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<blockquote>
+<p>在4+1架构中某些场景的利用率被大大提高</p>
+</blockquote>
+<p>讲完了硬件的架构和处理原理  下面我们该对硬件层级的处理流程进行一个了解</p>
+<p>当然  如果从管线角度去讲的话就没有任何意义了  因为基本上对于一个整个系统都未知来说还是不是很好去理解的  所以先来看看图形在硬件中的转换流程</p>
+<h1 id="更高层-硬件流程"><a href="#更高层-硬件流程" class="headerlink" title="更高层-硬件流程"></a><strong>更高层-硬件流程</strong></h1><h2 id="第一步-数据存储转换"><a href="#第一步-数据存储转换" class="headerlink" title="第一步 数据存储转换"></a>第一步 数据存储转换</h2><p><img src="http://img.blog.csdn.net/20161228175441639?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="资源信息和指令信息由硬盘经过CPU调度-传输到内存中转，再传输进显存中备用"><a href="#资源信息和指令信息由硬盘经过CPU调度-传输到内存中转，再传输进显存中备用" class="headerlink" title="资源信息和指令信息由硬盘经过CPU调度  传输到内存中转，再传输进显存中备用"></a>资源信息和指令信息由<strong>硬盘</strong>经过<strong>CPU调度</strong>  传输到<strong>内存</strong>中转，再传输进显存中备用</h3><p><img src="http://img.blog.csdn.net/20161228175538140?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>由图中的典型的带宽可见  GPU和显存之间的内部带宽  要比单纯的系统总线贷款要高很多<br>所以典型情况下渲染资源和渲染指令都被加载进显存  所以GPU在渲染过程中  只需向显存调度渲染指令避免了和系统总线频繁IO</p>
+<h2 id="第二步-进入渲染预备状态"><a href="#第二步-进入渲染预备状态" class="headerlink" title="第二步 进入渲染预备状态"></a>第二步 进入渲染预备状态</h2><p><img src="http://img.blog.csdn.net/20161228175832047?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>此时GPU的显存越大则普遍来说依靠CPU的加载额外渲染指令的需要就越少 显存中的信息一般包括：<br>显存和内存一样用于存储GPU处理过后的数据，在显存中有几种不同的储存区域，用于储存不同阶段需要的数据。<br>1、<strong>顶点缓冲区：用于储存从内存中传递过来的顶点数据。</strong><br>2、<strong>索引缓冲区：用于储存每个顶点的索引值，我们可以根据索引来使用相应的顶点</strong><br>3、<strong>纹理缓冲区：用于储存从内存中传递过来的纹理数据</strong><br>4、<strong>深度缓冲区：用于存储每个像素的深度信息</strong><br>5、<strong>模板缓冲区：用于存储像素的模板值，且模板缓冲区域深度缓冲区公用一片内存。</strong><br>6、<strong>颜色缓冲区：用于储存像素的颜色数据</strong></p>
+<p>待这部分后我们就可以了解下面的东西了 <strong>后续步骤将在之后介绍</strong></p>
+<h1 id="软件，第一步"><a href="#软件，第一步" class="headerlink" title="软件，第一步"></a>软件，第一步</h1><p>不管是三维模型  还是二维UI他们都是有个极其相似的数据结构的以3DS格式为例  ：<br><img src="http://img.blog.csdn.net/20161228164528779?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>都是以三角面为基础<br>如果经过软件解析的话出现的数据结构就是点和索引信息<br>具体的理解这个从点线面的构建过程：<br>一个点的列表<br><img src="http://img.blog.csdn.net/20161228172004052?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>根据索引信息链接点<br><img src="http://img.blog.csdn.net/20161228172105529?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>根据索引信息构成面和块：<br><img src="http://img.blog.csdn.net/20161228172200789?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>所有片面组成了模型的所有信息</p>
+<h4 id="举个例子帮助理解："><a href="#举个例子帮助理解：" class="headerlink" title="举个例子帮助理解："></a><strong>举个例子帮助理解：</strong></h4><p>对于下图，9个顶点及拓扑类型Triangle List，对应索引：[0,1,2, 0,2,3, 0,3,4, 0,4,5, 0,5,6, 0,6,7, 0,7,8]。<br><img src="http://img.blog.csdn.net/20161228172439827?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>所以  整个三维场景的数据基础  都是以这种数据结构为框架  之前的内容中说过了 点信息索引信息都被加载进了 <strong>显存</strong> 中备用</p>
+<h1 id="而"><a href="#而" class="headerlink" title="而"></a>而</h1><p>模型不光有框架而已  包括颜色，贴图 等信息 也被加载如显存</p>
+<hr>
+<h1 id="软件，第二步-——顶点着色器，坐标转换（几何阶段）"><a href="#软件，第二步-——顶点着色器，坐标转换（几何阶段）" class="headerlink" title="软件，第二步 ——顶点着色器，坐标转换（几何阶段）"></a>软件，第二步 ——顶点着色器，坐标转换（几何阶段）</h1><h2 id="变换阶段："><a href="#变换阶段：" class="headerlink" title="变换阶段："></a><strong>变换阶段：</strong></h2><p>此阶段是完全可编程的；<br>这个阶段的输入就是单个的顶点（顶点也是并行处理的）先来了解下变换阶段的概念</p>
+<h3 id="1-模型空间：Model-Space，也叫Local-Space"><a href="#1-模型空间：Model-Space，也叫Local-Space" class="headerlink" title="1. 模型空间：Model Space，也叫Local Space"></a><strong>1. 模型空间：Model Space，也叫Local Space</strong></h3><pre><code>直观的讲，这个坐标系一般以模型中心为原点，所有的模型在建模的时候给定的模型顶点坐标都以这个坐标系为基准，用户最开始所指定的顶点坐标也是位于该空间。
+给出模型空间的好处在于方便建模，以及单个模型的重重利用。因为一个物体可被放置到场景的多个地方，这时每个物体的顶点坐标显然是不一样的，但可以共享同一个模型。
+</code></pre><p><img src="http://img.blog.csdn.net/20161228174728762?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="2-世界空间：World-Space"><a href="#2-世界空间：World-Space" class="headerlink" title="2. 世界空间：World Space"></a><strong>2. 世界空间：World Space</strong></h3><pre><code>这个坐标系即3D场景给各个物体指定坐标的基准。、世界坐标系为整个游戏场景中的参考坐标系，是一个固定不变的坐标系，所有的模型的坐标都可以在世界坐标系中表示，模型在世界坐标系中可以执行位移变换，旋转变换，缩放变换等操作，但此时参考的坐标系是以世界坐标系为参考坐标系。在世界坐标系中还需要执行的是光照的计算、物体材质计算等工作。
+</code></pre><h3 id="3-视角空间：View-Space"><a href="#3-视角空间：View-Space" class="headerlink" title="3. 视角空间：View Space"></a><strong>3. 视角空间：View Space</strong></h3><pre><code>这个坐标是以照相机为基准的，以照相机位置为原点，照相机朝向z轴正方向，右边为x轴正方向，上边为y轴正方向。之所以设置这个坐标系，主要是为了主便接下来的投影及裁剪操作。如果直接在世界空间下进行，由于照相机位置、朝向灵活多变，计算将会十分复杂。有了视角空间，一切计算以原点为基准，会大大方便计算。
+</code></pre><h3 id="4-投影、裁剪空间：Projection-Clip-Space"><a href="#4-投影、裁剪空间：Projection-Clip-Space" class="headerlink" title="4. 投影、裁剪空间：Projection Clip Space"></a><strong>4. 投影、裁剪空间：Projection Clip Space</strong></h3><pre><code>这个空间即世界空间的物体被投影到相应的投影面上之后，继而进行裁剪操作所在的空间。
+用户指定的所有顶点都是基于模型空间的，在Vertex Shader阶段，每个顶点要依次经历所有这些空间，最终转换为屏幕上对应的二维坐标，不同空间之间的切换称为“空间变换”，实现空间变换的基本工作即矩阵。一下表明了裁剪过程，eye space坐标转换到project and clip space坐标的过程其实就是一个投影、剪裁、映射的过程。因为在不规则的视锥体内剪裁是一件非常困难的事，所以前人们将剪裁安排到一个单位立方体中进行，这个立方体被称为规范立方体（CCV），CVV的近平面（对应视锥体的近平面）的x、y坐标对应屏幕像素坐标（左下角0、0），z代表画面像素深度。所以这个转换过程事实上由三步组成：
+</code></pre><p>（1），用透视变换矩阵把顶点从视锥体变换到CVV中；<br>（2），在CVV内进行剪裁；<br>（3），屏幕映射：将经过前两步得到的坐标映射到屏幕坐标系上。</p>
+<p>  <img src="http://img.blog.csdn.net/20161228183050619?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<hr>
+<p>定点位置和法向量通常以模型坐标系或者世界空间坐标系表示。进行透视，顶点光照和纹理计算，动画角色计算蒙皮顶点着色器可以通过修改顶点位置来产生程序动画。</p>
+<h4 id="截至现在为止-我们得到了视角内的所有顶点数据"><a href="#截至现在为止-我们得到了视角内的所有顶点数据" class="headerlink" title="截至现在为止  我们得到了视角内的所有顶点数据"></a><strong>截至现在为止  我们得到了视角内的所有顶点数据</strong></h4><p>经过上面介绍过的<br><img src="http://img.blog.csdn.net/20161228194306517?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>再经过第一步介绍的点和索引结构  还原出点线面  想象一下  现在的场景内  只有模型的线框<br>拿到了供渲染顶点数据之后流程大概如下所示</p>
+<p><img src="http://img.blog.csdn.net/20161228192054866?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>在unity中  过程可以更精确的表述为：<br><img src="http://img.blog.csdn.net/20161228191427633?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>在移动设备上Unity才会有将Shader解析成OpenGLES这一步 </strong><br>我们可以看到V_shader和F_shader有着不同的工作范围。shader被编译为GPU汇编指令进行定点/光照/阴影等运算。而OPENGL和D3D都有嵌入shader的函数<br>在<br><strong>DX的版本中</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3DXCompileShaderFromResource()；</div></pre></td></tr></table></figure>
+<p><strong>openGL中</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">static char *shaderLoadSource(const char *filePath)</div><div class="line">&#123;</div><div class="line">    const size_t blockSize=512;</div><div class="line">    FILE *fp;</div><div class="line">    char buf[blockSize];</div><div class="line">    char *source=NULL;</div><div class="line">    size_t tmp,sourceLength=0;</div><div class="line"></div><div class="line">    fp=fopen(filePath,&quot;r&quot;);</div><div class="line">    if(!fp)&#123;</div><div class="line">        fprintf(stderr,&quot;shaderLoadSource():Unable to open %s for reading\n&quot;,filePath);</div><div class="line">        return NULL;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    while((tmp=fread(buf,1,blockSize,fp))&gt;0)</div><div class="line">    &#123;</div><div class="line">        char *newSource=(char *)malloc(sourceLength+tmp+1);</div><div class="line">        if(!newSource)&#123;</div><div class="line">            fprintf(stderr,&quot;shaderLoadSource():malloc failed\n&quot;);</div><div class="line">            if(source)&#123;</div><div class="line">                free(source);</div><div class="line">            &#125;</div><div class="line">            return NULL;</div><div class="line">        &#125;</div><div class="line">        if(source)&#123;</div><div class="line">            memcpy(newSource,source,sourceLength);</div><div class="line">            free(source);</div><div class="line">        &#125;</div><div class="line">        memcpy(newSource+sourceLength,buf,tmp);</div><div class="line">        source=newSource;</div><div class="line">        sourceLength+=tmp;</div><div class="line">    &#125;</div><div class="line">    fclose(fp);</div><div class="line">    if(source)&#123;</div><div class="line">        source[sourceLength]=&apos;\0&apos;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return source;</div><div class="line">&#125;</div><div class="line"></div><div class="line">static GLuint shaderCompileFromFile(GLenum type,const char *filePath)</div><div class="line">&#123;</div><div class="line">    char *source;</div><div class="line">    GLuint shader;</div><div class="line">    GLint length,result;</div><div class="line"></div><div class="line">    source=shaderLoadSource(filePath);</div><div class="line">    if(!source)&#123;</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line">    shader=glCreateShader(type);</div><div class="line">    length=strlen(source);</div><div class="line">    glShaderSource(shader,1,(const char**)&amp;source,&amp;length);</div><div class="line">    glCompileShader(shader);</div><div class="line">    free(source);</div><div class="line"></div><div class="line">    glGetShaderiv(shader,GL_COMPILE_STATUS,&amp;result);</div><div class="line">    if(result==GL_FALSE)&#123;</div><div class="line">        char *log;</div><div class="line"></div><div class="line">        glGetShaderiv(shader,GL_INFO_LOG_LENGTH,&amp;length);</div><div class="line">        log=(char *)malloc(length);</div><div class="line">        glGetShaderInfoLog(shader,length,&amp;result,log);</div><div class="line">        fprintf(stderr,&quot;shaderCompileFromFile(): Unable to compile %s: %s\n&quot;,filePath,log);</div><div class="line">        free(log);</div><div class="line"></div><div class="line">        glDeleteShader(shader);</div><div class="line">        return 0;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return shader;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void shaderAttachFromFile(GLuint program,GLenum type,const char *filePath)</div><div class="line">&#123;</div><div class="line">    GLuint shader=shaderCompileFromFile(type,filePath);</div><div class="line">    if(shader!=0)&#123;</div><div class="line">        glAttachShader(program,shader);</div><div class="line">        glDeleteShader(shader);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以我们终于可以看清楚shader是怎样工作  下一篇开始  我们将具体介绍Shader从入门到完成一些效果的过程</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h1><p>##如果我们以一个<strong>已知概念模型</strong>来总结这个工作过程</p>
+<h2 id="一个工厂中"><a href="#一个工厂中" class="headerlink" title="一个工厂中"></a>一个工厂中</h2><h3 id="shader-property中的-材质-纹理-颜色-光照-等等就像是工厂中的原材料"><a href="#shader-property中的-材质-纹理-颜色-光照-等等就像是工厂中的原材料" class="headerlink" title="shader property中的  材质  纹理  颜色 光照  等等就像是工厂中的原材料"></a><strong>shader property</strong>中的  材质  纹理  颜色 光照  等等就像是工厂中的原材料</h3><p>###<strong>硬件本身就是工人</strong></p>
+<h3 id="shader就像是一副装配图纸告诉工人以怎样的方式组织原材料"><a href="#shader就像是一副装配图纸告诉工人以怎样的方式组织原材料" class="headerlink" title="shader就像是一副装配图纸告诉工人以怎样的方式组织原材料"></a><strong>shader就像是一副装配图纸</strong>告诉工人以怎样的方式组织原材料</h3>
+  </div>
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2017/05/06/LEAP2.3_Core_analyse/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2017/05/06/《Unity Shader 与 计算机图形学》第二章/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题："><span class="post-toc-number">1.</span> <span class="post-toc-text">问题：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#入"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图形学"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">图形学</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#所以："><span class="post-toc-number">2.</span> <span class="post-toc-text">所以：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#提示："><span class="post-toc-number">3.</span> <span class="post-toc-text">提示：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#硬件"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">硬件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编程入门"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">编程入门</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工程实践"><span class="post-toc-number">3.0.3.</span> <span class="post-toc-text">工程实践</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最底层——GPU-硬件原理"><span class="post-toc-number">4.</span> <span class="post-toc-text">最底层——GPU/硬件原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-ALU：Arithmetic-Logic-Unit-算数逻辑单元"><span class="post-toc-number">4.0.0.1.</span> <span class="post-toc-text">1.ALU：Arithmetic Logic Unit 算数逻辑单元</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大部分ALU都可以完成以下运算∶"><span class="post-toc-number">4.0.0.2.</span> <span class="post-toc-text">大部分ALU都可以完成以下运算∶</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Cache："><span class="post-toc-number">4.0.0.3.</span> <span class="post-toc-text">2.Cache：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于一个典型的CPU来说"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">对于一个典型的CPU来说</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于典型的GPU来说"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">对于典型的GPU来说</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对比结构"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">对比结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#然而"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">然而</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NVIDIA"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">NVIDIA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#周期1-BC相互依存-则："><span class="post-toc-number">4.4.1.1.</span> <span class="post-toc-text">周期1 BC相互依存  则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#周期二：GF相互依存-则："><span class="post-toc-number">4.4.1.2.</span> <span class="post-toc-text">周期二：GF相互依存 则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#周齐三：-LK互相依存-则："><span class="post-toc-number">4.4.1.3.</span> <span class="post-toc-text">周齐三： LK互相依存 则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最后一个周期运算完毕"><span class="post-toc-number">4.4.1.4.</span> <span class="post-toc-text">最后一个周期运算完毕</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#更高层-硬件流程"><span class="post-toc-number">5.</span> <span class="post-toc-text">更高层-硬件流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一步-数据存储转换"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">第一步 数据存储转换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#资源信息和指令信息由硬盘经过CPU调度-传输到内存中转，再传输进显存中备用"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">资源信息和指令信息由硬盘经过CPU调度  传输到内存中转，再传输进显存中备用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二步-进入渲染预备状态"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">第二步 进入渲染预备状态</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件，第一步"><span class="post-toc-number">6.</span> <span class="post-toc-text">软件，第一步</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#举个例子帮助理解："><span class="post-toc-number">6.0.0.1.</span> <span class="post-toc-text">举个例子帮助理解：</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#而"><span class="post-toc-number">7.</span> <span class="post-toc-text">而</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件，第二步-——顶点着色器，坐标转换（几何阶段）"><span class="post-toc-number">8.</span> <span class="post-toc-text">软件，第二步 ——顶点着色器，坐标转换（几何阶段）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变换阶段："><span class="post-toc-number">8.1.</span> <span class="post-toc-text">变换阶段：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-模型空间：Model-Space，也叫Local-Space"><span class="post-toc-number">8.1.1.</span> <span class="post-toc-text">1. 模型空间：Model Space，也叫Local Space</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-世界空间：World-Space"><span class="post-toc-number">8.1.2.</span> <span class="post-toc-text">2. 世界空间：World Space</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-视角空间：View-Space"><span class="post-toc-number">8.1.3.</span> <span class="post-toc-text">3. 视角空间：View Space</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-投影、裁剪空间：Projection-Clip-Space"><span class="post-toc-number">8.1.4.</span> <span class="post-toc-text">4. 投影、裁剪空间：Projection Clip Space</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#截至现在为止-我们得到了视角内的所有顶点数据"><span class="post-toc-number">8.1.4.1.</span> <span class="post-toc-text">截至现在为止  我们得到了视角内的所有顶点数据</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">9.</span> <span class="post-toc-text">总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一个工厂中"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">一个工厂中</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shader-property中的-材质-纹理-颜色-光照-等等就像是工厂中的原材料"><span class="post-toc-number">9.1.1.</span> <span class="post-toc-text">shader property中的  材质  纹理  颜色 光照  等等就像是工厂中的原材料</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shader就像是一副装配图纸告诉工人以怎样的方式组织原材料"><span class="post-toc-number">9.1.2.</span> <span class="post-toc-text">shader就像是一副装配图纸告诉工人以怎样的方式组织原材料</span></a></li></ol></li></ol></li></ol>
+</div>
+<div class="post-back"><i class="material-icons">arrow_back</i></div>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+      <a  id="top-button" onfocus="this.blur();"><div class="up"><i class="material-icons material-up">vertical_align_top</i></div></a>
+      Copyright ©  2017  Winshare<br>
+      Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a>
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+
+<script src="https://moumao.moumaobuchiyu.com/js/materialize.min.js"></script>
+
+<script src="https://moumao.moumaobuchiyu.com/js/lazyload.min.js"></script>
+
+<script src="https://moumao.moumaobuchiyu.com/js/jquery.rotate.min.js"></script>
+
+<script src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="https://moumao.moumaobuchiyu.com/js/Vateral.min.js"></script>
+
+
+</body>
+</html>
