@@ -1,148 +1,126 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="moumao">
-    <meta name="description" content="欢迎来到某猫のBlog,我是moumao,希望你能喜欢我的小站">
-  <title>Winshare</title>
-  
-    <!-- stylesheets list from config.yml -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
     
-      <link rel="stylesheet" href="https://cdn.bootcss.com/materialize/0.98.2/css/materialize.min.css">
+        <meta name="description" content="Research about HCI/CG/VR/AR">
     
-      <link rel="stylesheet" href="/css/Vateral.min.css">
+
+    <!--Author-->
     
-  
-  
+        <meta name="author" content="Tom winshare">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="unity &amp; Computer graphics Chapter(1)"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Winshare"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>unity &amp; Computer graphics Chapter(1) - Winshare</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
 </head>
+
 <body>
-<div class="progress">
-    <div class="indeterminate"></div>
-</div>
-<a data-activates="slide-out"  class="button-collapse"><div class="nav-btn"><i class="material-icons">list</i></div></a>
-<div id="menu-outer">
-  <div id="menu-inner">
-      <ul id="slide-out" class="side-nav">
-          <div class="nav-header"  style="background-image: url(http://img2.niutuku.com/desk/1207/1149/bizhi-1149-54201.jpg)">
-              <!--<img id="headbg" src="http://img2.niutuku.com/desk/1207/1149/bizhi-1149-54201.jpg" ondragstart="return false;">-->
-              <div class="header-box"><img src="https://avatars0.githubusercontent.com/u/11496629?v=3&amp;u=bd77e11ace7464d1ac8cf1a66cafd44c16a2694f&amp;s=400" ondragstart="return false;"></div>
-              <p>Tom winshare</p>
-              <div class="nav-link">
-                  
-                  <div class="link-box"><a  href="https://github.com/OOXXXXOO" target="_blank"><div class="link-box-img"><img src="/images/link/github.png" ondragstart="return false;"></div></a></div>
-                  
 
-                  
-                  <div class="link-box"><a href="http://example.com" target="_blank"><div class="link-box-img"><img src="/images/link/weibo.png" ondragstart="return false;"></div></a></div>
-                  
+    <div id="wrapper">
 
-                  
-                  <div class="link-box"><a href="http://example.com" target="_blank"> <div class="link-box-img"><img src="/images/link/zhihu.png" ondragstart="return false;"> </div></a></div>
-                  
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
 
-                  
-                  <div class="link-box"><a href="http://example.com" target="_blank"> <div class="link-box-img"><img src="/images/link/douban.png" ondragstart="return false;"> </div></a></div>
-                  
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Winshare</span>
+        </a>
 
-              </div>
-              <div class="nav-search">
-                  <form id="search-form"> <!-- 搜索框相关 -->
-                      <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
-                      <div class="nav-search-img"><i class="material-icons">search</i></div>
-                  </form>
-                  <div id="local-search-result"></div> <!-- 搜索结果区 -->
-                  <p class='no-result'>无搜索结果</p>
-              </div>
-          </div>
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
 
-          <!--Homepage-->
-          
-          <li class="nav-list">
-              <a href="/" target="_self">
-                  <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
-              </a>
-          </li>
-          
+    </div>
+</header>
 
-          <!--archives-->
-          
-          <li class="nav-list dropdown-btn">
-              <a  class=""  target="_self">
-                  <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><img src="/images/smalldown.png"></div>
-              </a>
-          </li>
-          
-          <ul class="dropdown-menu dropdown" >
-              <li class="nav-dropdown-list">
-                  <a class="archive-link" href="/archives/2017/05/">五月 2017<span class="archive-count">3</span></a>
-              </li>
-          </ul>
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
 
-          <!--categories-->
-          
-          <li class="nav-list dropdown-btn">
-              <a   class=""  target="_self">
-                  <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><img src="/images/smalldown.png"></div>
-              </a>
-          </li>
-          
-          <ul class="dropdown-menu dropdown" >
-              <li class="nav-dropdown-list">
-                  
-              </li>
-          </ul>
 
-          <!--tags-->
-          
-          <li class="nav-list">
-              <a href="/archives" target="_self">
-                  <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
-              </a>
-          </li>
-          
-          <!--photo-->
-          
-          <li class="nav-list">
-              <a href="/photo" target="_self">
-                  <div class="nav-ico"><i class="material-icons">insert_photo</i> </div><p>影集</p>
-              </a>
-          </li>
-          
-          <!--friends-->
-          
-          <li class="nav-list">
-              <a href="/friends" target="_self">
-                  <div class="nav-ico"><i class="material-icons">face</i> </div><p>友链</p>
-              </a>
-          </li>
-          
-          <!--about-->
-          
-          <li class="nav-list">
-              <a href="/about" target="_self">
-                  <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
-              </a>
-          </li>
-          
-      </ul>
-  </div>
-</div>
-<div id="content-outer">
-  <div id="content-inner">
-    
-<article id="post">
-  <div class="post-page-title" style="background-image:url(http://pic1.win4000.com/wallpaper/7/5826e67d07567.jpg)" >
-  <h2>unity &amp; Computer graphics Chapter(1)</h2>
-    
-  <p>作者:Tom winshare &nbsp&nbsp 发布于:<time datetime="2017-05-06T10:44:48.245Z">
-          2017-05-06
-    </time>
-  </p>
-    
-  </div>
-  <div class="post-page-content">
-  <h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><h2 id="入"><a href="#入" class="headerlink" title="入"></a>入</h2><h3 id="图形学"><a href="#图形学" class="headerlink" title="图形学"></a>图形学</h3><p>大坑这么久，看了不少书，却发现一个严重的问题。大部分时间在<strong>知其然不知其所以然</strong>。没有一篇文章从GPU讲到游戏引擎再到游戏。<br>这种自底向上的架构性的东西对于图形学程序员来说可谓至关重要  我初学的时候就无时不刻在为GPU怎么参与图形运算<br>shader是干吗的？ 管线是个什么鬼？  那些牛逼闪闪的demo效果为什么的那么好？</p>
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>unity & Computer graphics Chapter(1)</h1>
+
+
+    <span class="image main"><img src="http://img.zcool.cn/community/015f24579f496c0000018c1b8903bd.png@900w_1l_2o_100sh.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><h2 id="入"><a href="#入" class="headerlink" title="入"></a>入</h2><h3 id="图形学"><a href="#图形学" class="headerlink" title="图形学"></a>图形学</h3><p>thumbnail: <a href="http://pic1.win4000.com/wallpaper/7/5826e67d07567.jpg" target="_blank" rel="external">http://pic1.win4000.com/wallpaper/7/5826e67d07567.jpg</a><br>大坑这么久，看了不少书，却发现一个严重的问题。大部分时间在<strong>知其然不知其所以然</strong>。没有一篇文章从GPU讲到游戏引擎再到游戏。<br>这种自底向上的架构性的东西对于图形学程序员来说可谓至关重要  我初学的时候就无时不刻在为GPU怎么参与图形运算<br>shader是干吗的？ 管线是个什么鬼？  那些牛逼闪闪的demo效果为什么的那么好？</p>
 <hr>
 <h1 id="所以："><a href="#所以：" class="headerlink" title="所以："></a>所以：</h1><p>这个系列三篇文章将从GPU工作到绘图过程~从一个史诗级unity 官方demo的shader技术~最终清楚地描述<br>GPU/OPEN GL/D3D/Shader/管线/渲染器/实时渲染算法/等等一大堆名词之间的关系，最终，我们将分析unity和unreal的画质究竟为什么会有差异，并以一个工程来证明，unity的画质也可以很好。</p>
 <hr>
@@ -225,58 +203,124 @@
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h1><p>##如果我们以一个<strong>已知概念模型</strong>来总结这个工作过程</p>
 <h2 id="一个工厂中"><a href="#一个工厂中" class="headerlink" title="一个工厂中"></a>一个工厂中</h2><h3 id="shader-property中的-材质-纹理-颜色-光照-等等就像是工厂中的原材料"><a href="#shader-property中的-材质-纹理-颜色-光照-等等就像是工厂中的原材料" class="headerlink" title="shader property中的  材质  纹理  颜色 光照  等等就像是工厂中的原材料"></a><strong>shader property</strong>中的  材质  纹理  颜色 光照  等等就像是工厂中的原材料</h3><p>###<strong>硬件本身就是工人</strong></p>
 <h3 id="shader就像是一副装配图纸告诉工人以怎样的方式组织原材料"><a href="#shader就像是一副装配图纸告诉工人以怎样的方式组织原材料" class="headerlink" title="shader就像是一副装配图纸告诉工人以怎样的方式组织原材料"></a><strong>shader就像是一副装配图纸</strong>告诉工人以怎样的方式组织原材料</h3>
-  </div>
-</article>
-<nav class="post-nav">
-  <!-- Prev Nav -->
-    
-  <a href="/2017/05/06/LEAP2.3_Core_analyse/" id="post_nav-newer" class="post-nav-content prev-content">
-      新篇
-  </a>
-    
+
+<!-- Tags -->
 
 
-  <!-- Next Nav -->
-    
-  <a href="/2017/05/06/《Unity Shader 与 计算机图形学》第二章/" id="post_nav-older" class="post-nav-content next-content">
-      旧篇
-  </a>
-    
-</nav>
-<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
-<div class="post-toc-none"><p>(无)</p></div>
-<div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题："><span class="post-toc-number">1.</span> <span class="post-toc-text">问题：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#入"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图形学"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">图形学</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#所以："><span class="post-toc-number">2.</span> <span class="post-toc-text">所以：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#提示："><span class="post-toc-number">3.</span> <span class="post-toc-text">提示：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#硬件"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">硬件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编程入门"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">编程入门</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#工程实践"><span class="post-toc-number">3.0.3.</span> <span class="post-toc-text">工程实践</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最底层——GPU-硬件原理"><span class="post-toc-number">4.</span> <span class="post-toc-text">最底层——GPU/硬件原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-ALU：Arithmetic-Logic-Unit-算数逻辑单元"><span class="post-toc-number">4.0.0.1.</span> <span class="post-toc-text">1.ALU：Arithmetic Logic Unit 算数逻辑单元</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大部分ALU都可以完成以下运算∶"><span class="post-toc-number">4.0.0.2.</span> <span class="post-toc-text">大部分ALU都可以完成以下运算∶</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Cache："><span class="post-toc-number">4.0.0.3.</span> <span class="post-toc-text">2.Cache：</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于一个典型的CPU来说"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">对于一个典型的CPU来说</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于典型的GPU来说"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">对于典型的GPU来说</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对比结构"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">对比结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#然而"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">然而</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NVIDIA"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">NVIDIA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#周期1-BC相互依存-则："><span class="post-toc-number">4.4.1.1.</span> <span class="post-toc-text">周期1 BC相互依存  则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#周期二：GF相互依存-则："><span class="post-toc-number">4.4.1.2.</span> <span class="post-toc-text">周期二：GF相互依存 则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#周齐三：-LK互相依存-则："><span class="post-toc-number">4.4.1.3.</span> <span class="post-toc-text">周齐三： LK互相依存 则：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#最后一个周期运算完毕"><span class="post-toc-number">4.4.1.4.</span> <span class="post-toc-text">最后一个周期运算完毕</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#更高层-硬件流程"><span class="post-toc-number">5.</span> <span class="post-toc-text">更高层-硬件流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一步-数据存储转换"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">第一步 数据存储转换</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#资源信息和指令信息由硬盘经过CPU调度-传输到内存中转，再传输进显存中备用"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">资源信息和指令信息由硬盘经过CPU调度  传输到内存中转，再传输进显存中备用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第二步-进入渲染预备状态"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">第二步 进入渲染预备状态</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件，第一步"><span class="post-toc-number">6.</span> <span class="post-toc-text">软件，第一步</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#举个例子帮助理解："><span class="post-toc-number">6.0.0.1.</span> <span class="post-toc-text">举个例子帮助理解：</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#而"><span class="post-toc-number">7.</span> <span class="post-toc-text">而</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件，第二步-——顶点着色器，坐标转换（几何阶段）"><span class="post-toc-number">8.</span> <span class="post-toc-text">软件，第二步 ——顶点着色器，坐标转换（几何阶段）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变换阶段："><span class="post-toc-number">8.1.</span> <span class="post-toc-text">变换阶段：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-模型空间：Model-Space，也叫Local-Space"><span class="post-toc-number">8.1.1.</span> <span class="post-toc-text">1. 模型空间：Model Space，也叫Local Space</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-世界空间：World-Space"><span class="post-toc-number">8.1.2.</span> <span class="post-toc-text">2. 世界空间：World Space</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-视角空间：View-Space"><span class="post-toc-number">8.1.3.</span> <span class="post-toc-text">3. 视角空间：View Space</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-投影、裁剪空间：Projection-Clip-Space"><span class="post-toc-number">8.1.4.</span> <span class="post-toc-text">4. 投影、裁剪空间：Projection Clip Space</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#截至现在为止-我们得到了视角内的所有顶点数据"><span class="post-toc-number">8.1.4.1.</span> <span class="post-toc-text">截至现在为止  我们得到了视角内的所有顶点数据</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">9.</span> <span class="post-toc-text">总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一个工厂中"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">一个工厂中</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shader-property中的-材质-纹理-颜色-光照-等等就像是工厂中的原材料"><span class="post-toc-number">9.1.1.</span> <span class="post-toc-text">shader property中的  材质  纹理  颜色 光照  等等就像是工厂中的原材料</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#shader就像是一副装配图纸告诉工人以怎样的方式组织原材料"><span class="post-toc-number">9.1.2.</span> <span class="post-toc-text">shader就像是一副装配图纸告诉工人以怎样的方式组织原材料</span></a></li></ol></li></ol></li></ol>
-</div>
-<div class="post-back"><i class="material-icons">arrow_back</i></div>
-  </div>
-</div>
-<div id="bottom-outer">
-  <div id="bottom-inner">
-      <a  id="top-button" onfocus="this.blur();"><div class="up"><i class="material-icons material-up">vertical_align_top</i></div></a>
-      Copyright ©  2017  Winshare<br>
-      Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a>
-  </div>
+
+<div class="tags">
+    <a href="/tags/CG-shader/" class="button small">CG-shader</a>
 </div>
 
-<!--影集界面需要的资源-->
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>留言:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
 
-<!-- scripts list from theme config.yml -->
+</div>
 
-<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
 
-<script src="https://moumao.moumaobuchiyu.com/js/materialize.min.js"></script>
 
-<script src="https://moumao.moumaobuchiyu.com/js/lazyload.min.js"></script>
+            </div>
+        </div>
 
-<script src="https://moumao.moumaobuchiyu.com/js/jquery.rotate.min.js"></script>
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                Winshare.tech
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/klugjo/hexo-theme-phantom/commits?author=klugjo" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
 
-<script src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
 
-<script src="https://moumao.moumaobuchiyu.com/js/Vateral.min.js"></script>
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'klugjo';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 </body>
+
 </html>

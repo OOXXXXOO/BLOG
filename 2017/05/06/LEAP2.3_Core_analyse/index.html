@@ -1,148 +1,127 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="moumao">
-    <meta name="description" content="欢迎来到某猫のBlog,我是moumao,希望你能喜欢我的小站">
-  <title>Winshare</title>
-  
-    <!-- stylesheets list from config.yml -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
     
-      <link rel="stylesheet" href="https://cdn.bootcss.com/materialize/0.98.2/css/materialize.min.css">
+        <meta name="description" content="Research about HCI/CG/VR/AR">
     
-      <link rel="stylesheet" href="/css/Vateral.min.css">
+
+    <!--Author-->
     
-  
-  
+        <meta name="author" content="Tom winshare">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="LEAP MOTION  Core Asstet 2.3 Full Analyse"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Winshare"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>LEAP MOTION  Core Asstet 2.3 Full Analyse - Winshare</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
 </head>
+
 <body>
-<div class="progress">
-    <div class="indeterminate"></div>
-</div>
-<a data-activates="slide-out"  class="button-collapse"><div class="nav-btn"><i class="material-icons">list</i></div></a>
-<div id="menu-outer">
-  <div id="menu-inner">
-      <ul id="slide-out" class="side-nav">
-          <div class="nav-header"  style="background-image: url(http://img2.niutuku.com/desk/1207/1149/bizhi-1149-54201.jpg)">
-              <!--<img id="headbg" src="http://img2.niutuku.com/desk/1207/1149/bizhi-1149-54201.jpg" ondragstart="return false;">-->
-              <div class="header-box"><img src="https://avatars0.githubusercontent.com/u/11496629?v=3&amp;u=bd77e11ace7464d1ac8cf1a66cafd44c16a2694f&amp;s=400" ondragstart="return false;"></div>
-              <p>Tom winshare</p>
-              <div class="nav-link">
-                  
-                  <div class="link-box"><a  href="https://github.com/OOXXXXOO" target="_blank"><div class="link-box-img"><img src="/images/link/github.png" ondragstart="return false;"></div></a></div>
-                  
 
-                  
-                  <div class="link-box"><a href="http://example.com" target="_blank"><div class="link-box-img"><img src="/images/link/weibo.png" ondragstart="return false;"></div></a></div>
-                  
+    <div id="wrapper">
 
-                  
-                  <div class="link-box"><a href="http://example.com" target="_blank"> <div class="link-box-img"><img src="/images/link/zhihu.png" ondragstart="return false;"> </div></a></div>
-                  
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
 
-                  
-                  <div class="link-box"><a href="http://example.com" target="_blank"> <div class="link-box-img"><img src="/images/link/douban.png" ondragstart="return false;"> </div></a></div>
-                  
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Winshare</span>
+        </a>
 
-              </div>
-              <div class="nav-search">
-                  <form id="search-form"> <!-- 搜索框相关 -->
-                      <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
-                      <div class="nav-search-img"><i class="material-icons">search</i></div>
-                  </form>
-                  <div id="local-search-result"></div> <!-- 搜索结果区 -->
-                  <p class='no-result'>无搜索结果</p>
-              </div>
-          </div>
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
 
-          <!--Homepage-->
-          
-          <li class="nav-list">
-              <a href="/" target="_self">
-                  <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
-              </a>
-          </li>
-          
+    </div>
+</header>
 
-          <!--archives-->
-          
-          <li class="nav-list dropdown-btn">
-              <a  class=""  target="_self">
-                  <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><img src="/images/smalldown.png"></div>
-              </a>
-          </li>
-          
-          <ul class="dropdown-menu dropdown" >
-              <li class="nav-dropdown-list">
-                  <a class="archive-link" href="/archives/2017/05/">五月 2017<span class="archive-count">3</span></a>
-              </li>
-          </ul>
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
 
-          <!--categories-->
-          
-          <li class="nav-list dropdown-btn">
-              <a   class=""  target="_self">
-                  <div class="nav-ico"><i class="material-icons">dashboard</i></div><p>分类</p><div class="dropdown-ico"><img src="/images/smalldown.png"></div>
-              </a>
-          </li>
-          
-          <ul class="dropdown-menu dropdown" >
-              <li class="nav-dropdown-list">
-                  
-              </li>
-          </ul>
 
-          <!--tags-->
-          
-          <li class="nav-list">
-              <a href="/archives" target="_self">
-                  <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
-              </a>
-          </li>
-          
-          <!--photo-->
-          
-          <li class="nav-list">
-              <a href="/photo" target="_self">
-                  <div class="nav-ico"><i class="material-icons">insert_photo</i> </div><p>影集</p>
-              </a>
-          </li>
-          
-          <!--friends-->
-          
-          <li class="nav-list">
-              <a href="/friends" target="_self">
-                  <div class="nav-ico"><i class="material-icons">face</i> </div><p>友链</p>
-              </a>
-          </li>
-          
-          <!--about-->
-          
-          <li class="nav-list">
-              <a href="/about" target="_self">
-                  <div class="nav-ico"><i class="material-icons">copyright</i> </div><p>关于</p>
-              </a>
-          </li>
-          
-      </ul>
-  </div>
-</div>
-<div id="content-outer">
-  <div id="content-inner">
-    
-<article id="post">
-  <div class="post-page-title" style="background-image:url(http://img.zcool.cn/community/015f24579f496c0000018c1b8903bd.png@900w_1l_2o_100sh.jpg)" >
-  <h2>LEAP MOTION  Core Asstet 2.3 Full Analyse</h2>
-    
-  <p>作者:Tom winshare &nbsp&nbsp 发布于:<time datetime="2017-05-06T10:44:48.247Z">
-          2017-05-06
-    </time>
-  </p>
-    
-  </div>
-  <div class="post-page-content">
-  <h3 id="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："><a href="#本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：" class="headerlink" title="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："></a>本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：</h3><hr>
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>LEAP MOTION  Core Asstet 2.3 Full Analyse</h1>
+
+
+    <span class="image main"><img src="http://img.zcool.cn/community/015f24579f496c0000018c1b8903bd.png@900w_1l_2o_100sh.jpg" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<h3 id="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："><a href="#本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：" class="headerlink" title="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："></a>本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：</h3><p>thumbnail: <a href="http://img.zcool.cn/community/015f24579f496c0000018c1b8903bd.png@900w_1l_2o_100sh.jpg" target="_blank" rel="external">http://img.zcool.cn/community/015f24579f496c0000018c1b8903bd.png@900w_1l_2o_100sh.jpg</a></p>
+<hr>
 <ul>
 <li><a href="http://blog.csdn.net/admintan/article/details/49980029" target="_blank" rel="external">基础</a></li>
 </ul>
@@ -775,54 +754,124 @@ Screen.height = Camera.pixelHeigth
 <p>后续将更新</p>
 <p>欢迎支持</p>
 
-  </div>
-</article>
-<nav class="post-nav">
-  <!-- Prev Nav -->
-    
+
+<!-- Tags -->
 
 
-  <!-- Next Nav -->
-    
-  <a href="/2017/05/06/《Unity Shader 与 计算机图形学》第一章/" id="post_nav-older" class="post-nav-content next-content">
-      旧篇
-  </a>
-    
-</nav>
-<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
-<div class="post-toc-none"><p>(无)</p></div>
-<div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："><span class="post-toc-number">1.</span> <span class="post-toc-text">本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一部分基-基础"><span class="post-toc-number"></span> <span class="post-toc-text">第一部分基-基础</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#first-基础"><span class="post-toc-number"></span> <span class="post-toc-text">first  基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Now，just-do-it"><span class="post-toc-number"></span> <span class="post-toc-text">Now，just do it.</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二部分：环境搭建"><span class="post-toc-number">1.</span> <span class="post-toc-text">第二部分：环境搭建</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1，核心组件的使用。"><span class="post-toc-number"></span> <span class="post-toc-text">1，核心组件的使用。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#（1）-handcontroller（以下简化为hc）"><span class="post-toc-number"></span> <span class="post-toc-text">（1）.handcontroller（以下简化为hc）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#（2）-SCENCE"><span class="post-toc-number"></span> <span class="post-toc-text">（2）.SCENCE</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#本周着重开始讲解leap开发中的实际问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">本周着重开始讲解leap开发中的实际问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#（其中值得注意的是：-swipe-和keytap这两个手势互相干扰非常严重-所以我们需要注意-这两个预制手势的共同使用是相当糟糕的）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">（其中值得注意的是：  swipe 和keytap这两个手势互相干扰非常严重  所以我们需要注意  这两个预制手势的共同使用是相当糟糕的）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#本周-我们着重将讲解代码的优化问题"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">本周  我们着重将讲解代码的优化问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一点："><span class="post-toc-number">2.</span> <span class="post-toc-text">第一点：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二点："><span class="post-toc-number">3.</span> <span class="post-toc-text">第二点：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#awake"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">awake</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三点-："><span class="post-toc-number">4.</span> <span class="post-toc-text">第三点 ：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#触发网格"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">触发网格</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三点："><span class="post-toc-number">5.</span> <span class="post-toc-text">第三点：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#UI"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">UI</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后："><span class="post-toc-number"></span> <span class="post-toc-text">最后：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1，触发式操作"><span class="post-toc-number">1.</span> <span class="post-toc-text">1，触发式操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2，手势操作（下一期）"><span class="post-toc-number">2.</span> <span class="post-toc-text">2，手势操作（下一期）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3，映射性操作（下一期）"><span class="post-toc-number">3.</span> <span class="post-toc-text">3，映射性操作（下一期）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#预警：这篇文章very-very-long"><span class="post-toc-number"></span> <span class="post-toc-text">预警：这篇文章very very long~~</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#入门："><span class="post-toc-number"></span> <span class="post-toc-text">入门：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SENCES"><span class="post-toc-number"></span> <span class="post-toc-text">SENCES</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#当我们把这四种prefab拖入场景加以调整"><span class="post-toc-number">1.</span> <span class="post-toc-text">当我们把这四种prefab拖入场景加以调整</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-最简单的scrolltext-可滑动的字体"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.最简单的scrolltext\可滑动的字体</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-按钮"><span class="post-toc-number"></span> <span class="post-toc-text">2.按钮</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义按钮样式替换元素-gt-继承以重用脚本设计-gt-自定义触发操作-gt-完成"><span class="post-toc-number">1.</span> <span class="post-toc-text">自定义按钮样式替换元素 ->继承以重用脚本设计->自定义触发操作->完成</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结："><span class="post-toc-number"></span> <span class="post-toc-text">总结：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-滑动条（slider）"><span class="post-toc-number"></span> <span class="post-toc-text">3.滑动条（slider）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从这开始就开始有意思了起来"><span class="post-toc-number">1.</span> <span class="post-toc-text">从这开始就开始有意思了起来</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#比较有趣"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">比较有趣</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#至此"><span class="post-toc-number"></span> <span class="post-toc-text">至此</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Bye-See-you-next-month"><span class="post-toc-number"></span> <span class="post-toc-text">Bye~ See you next month~</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过了这么久才来更这篇实在是因为项目工程量实在是不允许"><span class="post-toc-number">1.</span> <span class="post-toc-text">过了这么久才来更这篇实在是因为项目工程量实在是不允许</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#OK"><span class="post-toc-number"></span> <span class="post-toc-text">OK~</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#所以"><span class="post-toc-number">1.</span> <span class="post-toc-text">所以</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#最后"><span class="post-toc-number"></span> <span class="post-toc-text">最后</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#射线"><span class="post-toc-number">1.</span> <span class="post-toc-text">射线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#首先"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">首先</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其二"><span class="post-toc-number"></span> <span class="post-toc-text">其二</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#要把控制器的坐标也算进去才能保证你的射线是从指尖发出去的"><span class="post-toc-number"></span> <span class="post-toc-text">要把控制器的坐标也算进去才能保证你的射线是从指尖发出去的</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#至此-1"><span class="post-toc-number"></span> <span class="post-toc-text">至此</span></a>
-</div>
-<div class="post-back"><i class="material-icons">arrow_back</i></div>
-  </div>
-</div>
-<div id="bottom-outer">
-  <div id="bottom-inner">
-      <a  id="top-button" onfocus="this.blur();"><div class="up"><i class="material-icons material-up">vertical_align_top</i></div></a>
-      Copyright ©  2017  Winshare<br>
-      Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a>
-  </div>
+
+<div class="tags">
+    <a href="/tags/Gesture-tracking/" class="button small">Gesture tracking</a>
 </div>
 
-<!--影集界面需要的资源-->
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>留言:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
 
-<!-- scripts list from theme config.yml -->
+</div>
 
-<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
 
-<script src="https://moumao.moumaobuchiyu.com/js/materialize.min.js"></script>
 
-<script src="https://moumao.moumaobuchiyu.com/js/lazyload.min.js"></script>
+            </div>
+        </div>
 
-<script src="https://moumao.moumaobuchiyu.com/js/jquery.rotate.min.js"></script>
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                Winshare.tech
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/klugjo/hexo-theme-phantom/commits?author=klugjo" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
 
-<script src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
 
-<script src="https://moumao.moumaobuchiyu.com/js/Vateral.min.js"></script>
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'klugjo';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 </body>
+
 </html>
