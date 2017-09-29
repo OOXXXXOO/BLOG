@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Research about HCI/CG/VR/AR">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Tom winshare">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Monte-carlo Ray tracer system(1) design ,theory, struct and build."/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Winshare"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>Monte-carlo Ray tracer system(1) design ,theory, struct and build. - Winshare</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-98667296-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Winshare</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>Monte-carlo Ray tracer system(1) design ,theory, struct and build.</h1>
+
+
+    <span class="image main"><img src="http://img.hb.aicdn.com/8e66058a5513ad8a6a75292f70b0440283bfe1bf2acf2-JVAR4Y_fw658" alt="" /></span>
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<h1 id="实时全局光照"><a href="#实时全局光照" class="headerlink" title="实时全局光照"></a>实时全局光照</h1><p>对于现在的CG相关行业来说  就如同一个待跨越的圣杯一样。而在GPU不断进步的过程中，我们却对实现全局光照越来越没有信心  。性能不够也是我们最常在嘴上提到的词语<br>但是可以说其核心原理早就实现了  在这些年其核心原理并没有取得很大的突破这也是现阶段无法实现实时全局光照的原因之一。</p>
+<hr>
+<h4 id="对待这样一个系统来说-我们要先从原理说起也就是Monte-Carlo-数值积分。因此第一篇文章着重于算法和设计-具体的代码将不会很多。"><a href="#对待这样一个系统来说-我们要先从原理说起也就是Monte-Carlo-数值积分。因此第一篇文章着重于算法和设计-具体的代码将不会很多。" class="headerlink" title="对待这样一个系统来说  我们要先从原理说起也就是Monte-Carlo 数值积分。因此第一篇文章着重于算法和设计  具体的代码将不会很多。"></a>对待这样一个系统来说  我们要先从原理说起也就是Monte-Carlo 数值积分。因此第一篇文章着重于算法和设计  具体的代码将不会很多。</h4><hr>
+<h1 id="Chapter-（1）"><a href="#Chapter-（1）" class="headerlink" title="Chapter （1）"></a>Chapter （1）</h1><p>从</p>
+<script type="math/tex; mode=display">\int_{0}^{1}x^{2}dx=\frac{1}{3}</script><p>说起<br>在通常的过程中  对于这样一个简单的定积分我们人脑的求解过程是以固定的微分积分公式计算，公式虽然能方便计算出定积分的精确值，但是有一个局限就是要首先通过不定积分得到被积函数的原函数。有的时候，求原函数是非常困难的，而有的函数，如</p>
+<script type="math/tex; mode=display">f(x) = \frac{\sin x}{x}</script><p>，已经被证明不存在初等原函数，这样，就无法用Newton-Leibniz公式，只能另想办法。</p>
+<p>我们以$y&lt;(x^2)$作为判断依据去划分区域来判断区域划分 再通过<strong>随机</strong>生成的点去重复的做判断</p>
+<p>当随机点数量到达一定之后  我们以两个区域的点的数量作为依据  即可得出结果  且点数越多误差越小<br>根据伯努利大数法则：事件发生的频率依概率收敛于事件的概率p</p>
+<p>如下图：<br><img src="http://img.blog.csdn.net/20161109232345678" alt="Monte"></p>
+<p>而一般来讲Monte Carlo方法虽然可以解决很多疑难杂症  但是对于复杂度要求极高的光线追踪领域  其结果十分惊艳 但并不能够称之为一个十分简洁的算法</p>
+<p>下面我们进入下一章</p>
+<hr>
+<h1 id="光"><a href="#光" class="headerlink" title="光"></a>光</h1><p>我们在其他文章中讲到了光照模型这一概念  然而应用在传统的实时渲染领域  光照模型则是一个<strong>相对高效但是低质的概念</strong>  所在实时渲染领域  其多数是考虑怎么尽量的使用障眼法去得到一个更逼近数值积分方法的结果 在洪培技术预计算的技术发展方面</p>
+<p> 类似于UE4的静态效果 Paris demo 在美术和实时光照技术的双重作用下  其效果已经达到了现有计算条件下画质的巅峰<br> <img src="https://cdn2.unrealengine.com/blog/Feb15/unrealparis_lighting_001_mini-1000x563-2124608511.gif" alt="这里写图片描述"></p>
+<h3 id="但是相比真正的全局光照，效果仍旧差了一些。"><a href="#但是相比真正的全局光照，效果仍旧差了一些。" class="headerlink" title="但是相比真正的全局光照，效果仍旧差了一些。"></a>但是相比真正的全局光照，效果仍旧差了一些。</h3><p>也许会有人说 如此大的代价  去提升那20-30%的画质  值不值得 ？</p>
+<h4 id="当然值得！！"><a href="#当然值得！！" class="headerlink" title="当然值得！！"></a><strong>当然值得！！</strong></h4><p>在讲解下一章之前我们来了解一下传统的光栅化渲染技术</p>
+<hr>
+<h3 id="什么是光栅化？什么是光栅？"><a href="#什么是光栅化？什么是光栅？" class="headerlink" title="什么是光栅化？什么是光栅？"></a>什么是光栅化？什么是光栅？</h3><p><strong>光栅</strong>是光学中一种常见的概念  意为大量等距平行狭缝<br>然而在实际中光栅化的意义<strong>接近于像素化，离散化</strong>；用已知概念去理解  类似于<strong>透过纱窗去看外面的世界</strong><br>传统构成三维观察方法常用的为等轴测投影和透视投影。</p>
+<p>首先要讨论的是如何把一个三维模型的数据集绘制成相应的模型</p>
+<blockquote>
+<p>这个阶段其实在《Real time Rending》这本书和之前的文章里介绍的很清楚了</p>
+</blockquote>
+<p>渲染管线的<strong>基础结构</strong>分为：<br><img src="http://img.blog.csdn.net/20170512125903607?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="1-Application应用阶段"><a href="#1-Application应用阶段" class="headerlink" title="1.Application应用阶段"></a>1.Application应用阶段</h3><p>需要渲染的几何体从一个固定的数据结构被传递到几何阶段。这传递过去的东西被称为图元，例如点、线、三角形，这些图元有可能最终显示到屏幕上。这是应用阶段最重要的任务。<br>由软件实现的应用阶段的问题可能在于，它不能像几何和光栅化阶段那样划分为多个子阶段。但是，为了提高性能，这一阶段经常是由多核并行执行。在设计中，这称之为超标量体系，</p>
+<h3 id="2-Geometry几何阶段"><a href="#2-Geometry几何阶段" class="headerlink" title="2.Geometry几何阶段"></a>2.Geometry几何阶段</h3><p><img src="http://img.blog.csdn.net/20170512130143849?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>在这个阶段一般是对模型进行视图变换  对操作进行响应  对顶点进行着色  投影  裁剪和屏幕映射</p>
+<p>相应的例如<strong>变换过程</strong>如下</p>
+<p><img src="http://img.blog.csdn.net/20170512130410863?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70//SouthEast" alt="这里写图片描述"></p>
+<p>如<strong>裁剪过程</strong><br><img src="http://img.blog.csdn.net/20170512130831773?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>裁剪之后的图像  还不能用来显示  现代操作系统的图像大多数运行在窗口之下  所以针对已经计算好的显示方式来说还需要最后一步 那就是图像帧对屏幕相应区域的映射</p>
+<p>过程如下图：</p>
+<p><img src="http://img.blog.csdn.net/20170512131233837?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>从另一个角度我们也可以考虑到  为什么全屏运行的游戏  效果会更好一些  这与省略了映射阶段也有着一定的关系</p>
+<h3 id="3-Rasterizer光栅器"><a href="#3-Rasterizer光栅器" class="headerlink" title="3.Rasterizer光栅器"></a>3.Rasterizer光栅器</h3><p>在这个阶段的细分任务中我们算是可以看出这些效果的成因<br><img src="http://img.blog.csdn.net/20170512131633709?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>渲染的过程大致相当于：</p>
+<p><img src="http://img.blog.csdn.net/20161228194306517?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>至于牵扯到具体的光效  ，阴影  等信息着色器就开始担当大任啦<br>具体可见：<a href="http://blog.csdn.net/admintan/article/details/53913624" target="_blank" rel="external">着色器部分</a></p>
+<p>讲完了光栅化体系  我们可以看得到  其效果都是由理论模型模拟效果  效率在现在的光栅化芯片加持下  还算不错  在好的硬件中如GTX1080Ti  甚至能把一个4K 的普遍场景渲染到120Hz</p>
+<h3 id="但是"><a href="#但是" class="headerlink" title="但是"></a>但是</h3><p>在大多数作品中  我们不可能达到非常好的效果  因为即使类似Unreal Paris demo这种 预渲染的效果  已经计算好了光照  美术和设计还有着色器方面的设计要求实在是太高了</p>
+<p>那么  我们实现实时全局光照的意义在哪里？</p>
+<p><strong>举个例子</strong>  如果在一个场景之下  我们对一个像素需要<strong>30</strong>条光线来收敛  以最小的<strong>720p</strong>  也就是1280<em>720分辨率  再加上60hz的刷新率  可以看到每秒钟需要处理的光线数量达到了<em>*16亿5000万条</em></em></p>
+<p>那我们以一个正常效果的收敛来计算<br>收敛采样数为200  <strong>1080p分辨率</strong>  60hz刷新率<br>每秒钟需要处理的光线数量达到了<strong>248亿</strong></p>
+<h4 id="不得不承认"><a href="#不得不承认" class="headerlink" title="不得不承认"></a><strong>不得不承认</strong></h4><p>在传统的SIMD GPU架构上光线追踪的效率被大大折扣  因此移动GPU巨头  多年为苹果设计GPU的Imagination甚至收购了一些企业  制作了光线追踪加速卡  以至于我们可以在移动端的功耗前提下实现稳定的光线追踪技术<br>以下为相应的架构图  </p>
+<p><img src="http://static.leiphone.com/uploads/new/article/740_740/201512/5680eff18a3c4.jpg?imageMogr2/format/jpg/quality/90" alt="这里写图片描述"></p>
+<p>而我们再看看SIMD</p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1494578601005&amp;di=842fed2888e97815c0a2d378f4e1068d&amp;imgtype=0&amp;src=http://img.hexun.com/2011-06-10/130431162.jpg" alt="这里写图片描述"></p>
+<h2 id="因此实时光线追踪绝不是遥不可及的技术"><a href="#因此实时光线追踪绝不是遥不可及的技术" class="headerlink" title="因此实时光线追踪绝不是遥不可及的技术"></a>因此实时光线追踪绝不是遥不可及的技术</h2><hr>
+<p>但是仅仅这些我们不足以对光线追踪产生如此大的兴趣  因此实时光线追踪的好处甚至包含了准确反映光的衍射，色散，等等光学特性  这在传统体系之下几乎是无法做到的 </p>
+<h4 id="最终结合计算物理中的流体模拟，动力学模拟，甚至量子物理模拟-在计算机中建立一个完全拟真的世界-永远是人类为之努力的目标"><a href="#最终结合计算物理中的流体模拟，动力学模拟，甚至量子物理模拟-在计算机中建立一个完全拟真的世界-永远是人类为之努力的目标" class="headerlink" title="最终结合计算物理中的流体模拟，动力学模拟，甚至量子物理模拟  在计算机中建立一个完全拟真的世界  永远是人类为之努力的目标"></a><strong>最终结合计算物理中的流体模拟，动力学模拟，甚至量子物理模拟  在计算机中建立一个完全拟真的世界  永远是人类为之努力的目标</strong></h4><p>很庆幸的是  这其中很多技术都取得了关键突破</p>
+<h1 id="Chapter（2）"><a href="#Chapter（2）" class="headerlink" title="Chapter（2）"></a>Chapter（2）</h1><p>1979年，TurnerWhitted在光线投射的基础上，加入光与物体表面的交互，是光线在物体表面沿着反射，折射以及散射方式上继续传播，直到与光源相交这一方法后来也被称为经典光线跟踪方法、递归式光线追踪（Recursive Ray Tracing）方法，或 Whitted-style 光线跟踪方法。</p>
+<p>其主要思想是从视点向成像平面上的像素发射光线，找到与该光线相交的最近物体的交点，如果该点处的表面是散射面，则计算光源直接照射该点产生的颜色；如果该点处表面是镜面或折射面，则继续向反射或折射方向跟踪另一条光线，如此递归下去，直到光线逃逸出场景或达到设定的最大递归深度。<br>by浅墨</p>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><h4 id="我们如果能看到一个物体的某个点-这个点必然反射-折射了光线"><a href="#我们如果能看到一个物体的某个点-这个点必然反射-折射了光线" class="headerlink" title="我们如果能看到一个物体的某个点  这个点必然反射/折射了光线"></a><strong>我们如果能看到一个物体的某个点  这个点必然反射/折射了光线</strong></h4><p>而对于光线追踪这个过程本身来讲就像是自然世界的逆过程，朝着我们能看到的所有点发射光线，追踪次光线（shadow ,reflection ,refraction）。必然能够回到光源。</p>
+<p><img src="http://img.blog.csdn.net/20170917215533557?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>图中的几个部分分别说明了 对象的表示   光线的求解方式<br>相交的求解方式  等等  我们分公式来举例说明一下每个公式怎样用代码求解</p>
+<h3 id="基础定义类"><a href="#基础定义类" class="headerlink" title="基础定义类"></a>基础定义类</h3><h4 id="三位向量运算类"><a href="#三位向量运算类" class="headerlink" title="三位向量运算类"></a>三位向量运算类</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vec3</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    T x, y, z;</div><div class="line">    Vec3() : x(T(<span class="number">0</span>)), y(T(<span class="number">0</span>)), z(T(<span class="number">0</span>)) &#123;&#125;</div><div class="line">    Vec3(T xx) : x(xx), y(xx), z(xx) &#123;&#125;</div><div class="line">    Vec3(T xx, T yy, T zz) : x(xx), y(yy), z(zz) &#123;&#125;</div><div class="line">    <span class="comment">//正规化</span></div><div class="line">    <span class="function">Vec3&amp; <span class="title">normalize</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        T nor2 = length2();</div><div class="line">        <span class="keyword">if</span> (nor2 &gt; <span class="number">0</span>) &#123;</div><div class="line">            T invNor = <span class="number">1</span> / <span class="built_in">sqrt</span>(nor2);</div><div class="line">            x *= invNor, y *= invNor, z *= invNor;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//运算定义</span></div><div class="line">    Vec3&lt;T&gt; <span class="keyword">operator</span> * (<span class="keyword">const</span> T &amp;f) <span class="keyword">const</span> &#123; <span class="keyword">return</span> Vec3&lt;T&gt;(x * f, y * f, z * f); &#125;</div><div class="line">    <span class="comment">//标量*向量</span></div><div class="line">    Vec3&lt;T&gt; <span class="keyword">operator</span> * (<span class="keyword">const</span> Vec3&lt;T&gt; &amp;v) <span class="keyword">const</span> &#123; <span class="keyword">return</span> Vec3&lt;T&gt;(x * v.x, y * v.y, z * v.z); &#125;</div><div class="line">    <span class="comment">//向量1*向量2</span></div><div class="line">    <span class="function">T <span class="title">dot</span><span class="params">(<span class="keyword">const</span> Vec3&lt;T&gt; &amp;v)</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> x * v.x + y * v.y + z * v.z; &#125;</div><div class="line">    <span class="comment">//点积</span></div><div class="line">    Vec3&lt;T&gt; <span class="keyword">operator</span> - (<span class="keyword">const</span> Vec3&lt;T&gt; &amp;v) <span class="keyword">const</span> &#123; <span class="keyword">return</span> Vec3&lt;T&gt;(x - v.x, y - v.y, z - v.z); &#125;</div><div class="line">    <span class="comment">//向量1-向量2</span></div><div class="line">    Vec3&lt;T&gt; <span class="keyword">operator</span> + (<span class="keyword">const</span> Vec3&lt;T&gt; &amp;v) <span class="keyword">const</span> &#123; <span class="keyword">return</span> Vec3&lt;T&gt;(x + v.x, y + v.y, z + v.z); &#125;</div><div class="line">    <span class="comment">//向量1+向量2</span></div><div class="line">    Vec3&lt;T&gt;&amp; <span class="keyword">operator</span> += (<span class="keyword">const</span> Vec3&lt;T&gt; &amp;v) &#123; x += v.x, y += v.y, z += v.z; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</div><div class="line">    <span class="comment">//向量自增</span></div><div class="line">    Vec3&lt;T&gt;&amp; <span class="keyword">operator</span> *= (<span class="keyword">const</span> Vec3&lt;T&gt; &amp;v) &#123; x *= v.x, y *= v.y, z *= v.z; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</div><div class="line">    <span class="comment">//向量自乘</span></div><div class="line">    Vec3&lt;T&gt; <span class="keyword">operator</span> - () <span class="keyword">const</span> &#123; <span class="keyword">return</span> Vec3&lt;T&gt;(-x, -y, -z); &#125;</div><div class="line">    <span class="comment">//求负</span></div><div class="line">    <span class="function">T <span class="title">length2</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> x * x + y * y + z * z; &#125;</div><div class="line">    <span class="comment">//模^2</span></div><div class="line">    <span class="function">T <span class="title">length</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">sqrt</span>(length2()); &#125;</div><div class="line">    <span class="comment">//模</span></div><div class="line">    <span class="keyword">friend</span> <span class="built_in">std</span>::ostream &amp; <span class="keyword">operator</span> &lt;&lt; (<span class="built_in">std</span>::ostream &amp;os, <span class="keyword">const</span> Vec3&lt;T&gt; &amp;v)</div><div class="line">    &#123;</div><div class="line">        os &lt;&lt; <span class="string">"["</span> &lt;&lt; v.x &lt;&lt; <span class="string">" "</span> &lt;&lt; v.y &lt;&lt; <span class="string">" "</span> &lt;&lt; v.z &lt;&lt; <span class="string">"]"</span>;</div><div class="line">        <span class="keyword">return</span> os;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当然 这是较为精简的写法和部分运算 下篇文章中  我们将着重来尝试优化渲染效率和效果  但是其中涉及的复杂运算不利于基础概念的理解  所以我们用比较基础的运算来说明</p>
+</blockquote>
+<p>同时按照图中顺序 我们将对这整个过程作一个说明</p>
+<hr>
+<h3 id="Sphere-Ray-intersection-给出光线和球的表达式-求相交"><a href="#Sphere-Ray-intersection-给出光线和球的表达式-求相交" class="headerlink" title="Sphere / Ray intersection (给出光线和球的表达式  求相交)"></a>Sphere / Ray intersection (给出光线和球的表达式  求相交)</h3><h4 id="Sphere-equation-三维向量的球面表达式-可以想象球面点到球心的差的平方为半径的平方"><a href="#Sphere-equation-三维向量的球面表达式-可以想象球面点到球心的差的平方为半径的平方" class="headerlink" title="Sphere equation/三维向量的球面表达式  可以想象球面点到球心的差的平方为半径的平方"></a>Sphere equation/三维向量的球面表达式  可以想象球面点到球心的差的平方为半径的平方</h4><script type="math/tex; mode=display">\left ( \vec{p}-\vec{c} \right )\cdot \left ( \vec{p}-\vec{c} \right )=r^{2}</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Vec3f center;                           <span class="comment">/// position of the sphere</span></div><div class="line"><span class="keyword">float</span> radius, radius2;                  <span class="comment">/// sphere radius and radius^2</span></div><div class="line">Vec3f surfaceColor, emissionColor;      <span class="comment">/// surface color and emission (light)</span></div><div class="line"><span class="keyword">float</span> transparency, reflection;         <span class="comment">/// surface transparency and reflectivity</span></div><div class="line">Sphere(</div><div class="line">    <span class="keyword">const</span> Vec3f &amp;c,</div><div class="line">    <span class="keyword">const</span> <span class="keyword">float</span> &amp;r,</div><div class="line">    <span class="keyword">const</span> Vec3f &amp;sc,</div><div class="line">    <span class="keyword">const</span> <span class="keyword">float</span> &amp;refl = <span class="number">0</span>,</div><div class="line">    <span class="keyword">const</span> <span class="keyword">float</span> &amp;transp = <span class="number">0</span>,</div><div class="line">    <span class="keyword">const</span> Vec3f &amp;ec = <span class="number">0</span>) :</div><div class="line">    center(c), radius(r), radius2(r * r), surfaceColor(sc), emissionColor(ec),</div><div class="line">    transparency(transp), reflection(refl)</div><div class="line">&#123; <span class="comment">/* empty */</span> &#125;</div></pre></td></tr></table></figure>
+<h4 id="Ray-equation"><a href="#Ray-equation" class="headerlink" title="Ray equation"></a>Ray equation</h4><script type="math/tex; mode=display">\vec{r}\left ( t \right )=\vec{o}+t\vec{d}</script><p>这个应该就不用说了 发射点向量和发射的方向向量</p>
+<p>仅需要两个参数<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Vec3f &amp;rayorig; </div><div class="line"><span class="keyword">const</span> Vec3f &amp;raydir;</div></pre></td></tr></table></figure></p>
+<h4 id="Intersection"><a href="#Intersection" class="headerlink" title="Intersection"></a>Intersection</h4><p>(1)</p>
+<script type="math/tex; mode=display">\left ( \vec{o}+t\vec{d}-\vec{c} \right )\cdot \left ( \vec{o}+t\vec{d}-\vec{c} \right )= r^{2}</script><p>or</p>
+<script type="math/tex; mode=display">t^{2}\left ( \vec{d}\cdot \vec{d} \right )+2\left ( \vec{o}-\vec{c} \right )t\vec{d}+
+\left ( \vec{o}-\vec{c} \right )\cdot \left ( \vec{o}-\vec{c} \right )-r^{2}=0</script><blockquote>
+<p>值得注意的是 intersect是定义在结构体当中的 并非独立</p>
+</blockquote>
+<p>而最终判断是否相交需要bool类型做判断  即判断给定光线和给定球体是否相交</p>
+<p><img src="https://www.scratchapixel.com/images/upload/ray-simple-shapes/rayspherecases.png?" alt="intersect"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">intersect</span><span class="params">(<span class="keyword">const</span> Vec3f &amp;rayorig, <span class="keyword">const</span> Vec3f &amp;raydir, <span class="keyword">float</span> &amp;t0, <span class="keyword">float</span> &amp;t1)</span> <span class="keyword">const</span></span></div><div class="line">&#123;</div><div class="line">    Vec3f l = center - rayorig;</div><div class="line">    <span class="keyword">float</span> tca = l.dot(raydir);</div><div class="line">    <span class="keyword">if</span> (tca &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">float</span> d2 = l.dot(l) - tca * tca;</div><div class="line">    <span class="keyword">if</span> (d2 &gt; radius2) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">float</span> thc = <span class="built_in">sqrt</span>(radius2 - d2);</div><div class="line">    t0 = tca - thc;</div><div class="line">    t1 = tca + thc;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然  这仅仅是与球体的相交检验  更多的  和各种几何体和各种网格的检验代码  我们将在以后的文章中提及</p>
+<hr>
+<h3 id="Illumination-Equation-光照方程"><a href="#Illumination-Equation-光照方程" class="headerlink" title="Illumination Equation(光照方程)"></a>Illumination Equation(光照方程)</h3><p>在上图中 Blin-Phone 光照方程如下</p>
+<script type="math/tex; mode=display">I=k_{a}I_{a}+I_{i}\left ( k_{d}\left ( \vec{L}\cdot \vec{N}  \right )+k_{s} \left ( \vec{V}\cdot \vec{R} \right )^{n} \right )+k_{t}I_{t}+k_{r}I_{r}</script><p>$I<em>{a}K</em>{a}$为递归元素</p>
+<p>但是我们作为基本传参的方程样式应该是渲染方程中的</p>
+<p>猛地一看这么长确实很懵逼  现在市面上很多的书籍教材都不会对参数做详解<br>所以就需要我们把这个渲染方程分开来看 看看每一部分到底代表什么</p>
+<blockquote>
+<p>事实上  我们也可以发现  渲染方程都是分开求解的 最后的结果是所有光照类型部分结果的总和</p>
+</blockquote>
+<h4 id="1-（环境光）-I-amb-k-a-I-a"><a href="#1-（环境光）-I-amb-k-a-I-a" class="headerlink" title="1. （环境光）$I{amb}=k{a}I_{a}$"></a>1. （环境光）$I<em>{amb}=k</em>{a}I_{a}$</h4><p>$I<em>{a}$是环境光的强度<br>$k</em>{a}$代表表面环境光反射率在0-1之间<br>但是在基本的渲染方程中环境光被包含在漫反射中</p>
+<h4 id="2-（漫反射）-I-diff-K-d-I-p-cos-left-theta-right-K-d-I-p-left-vec-N-cdot-vec-L-right-k-a-I-a"><a href="#2-（漫反射）-I-diff-K-d-I-p-cos-left-theta-right-K-d-I-p-left-vec-N-cdot-vec-L-right-k-a-I-a" class="headerlink" title="2. （漫反射）$I{diff}=K{d}I{p}cos\left (\theta \right )=K{d}I{p}\left (\vec{N}\cdot \vec{L} \right )+k{a}I_{a}$"></a>2. （漫反射）$I<em>{diff}=K</em>{d}I<em>{p}cos\left (\theta \right )=K</em>{d}I<em>{p}\left (\vec{N}\cdot \vec{L} \right )+k</em>{a}I_{a}$</h4><p>$K_{d}$为表面漫反射率</p>
+<p>$I_{p}$为点光源强度</p>
+<p>$\vec{N}$为表面法向量</p>
+<p>$\vec{L}$为入射光方向</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">    </div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_RAY_DEPTH 5</span></div><div class="line">    Vec3f phit = rayorig + raydir * tnear; <span class="comment">// point of intersection</span></div><div class="line">    Vec3f nhit = phit - sphere-&gt;center; <span class="comment">// normal at the intersection point</span></div><div class="line">    <span class="keyword">float</span> bias = <span class="number">1e-4</span>; <span class="comment">// add some bias to the point from which we will be tracing 在追踪中加入偏移</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">float</span> <span class="title">mix</span><span class="params">(<span class="keyword">const</span> <span class="keyword">float</span> &amp;a, <span class="keyword">const</span> <span class="keyword">float</span> &amp;b, <span class="keyword">const</span> <span class="keyword">float</span> &amp;mix)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> b * mix + a * (<span class="number">1</span> - mix);</div><div class="line">&#125;</div><div class="line"></div><div class="line">   <span class="keyword">if</span> ((sphere-&gt;transparency &gt; <span class="number">0</span> || sphere-&gt;reflection &gt; <span class="number">0</span>) &amp;&amp; depth &lt; MAX_RAY_DEPTH) &#123;</div><div class="line">        <span class="comment">//如果 （球体不透明度或者反射率大于0）且深度小于最大递归深度</span></div><div class="line">        <span class="keyword">float</span> facingratio = -raydir.dot(nhit);</div><div class="line">        <span class="comment">// change the mix value to tweak the effect</span></div><div class="line">        <span class="keyword">float</span> fresneleffect = mix(<span class="built_in">pow</span>(<span class="number">1</span> - facingratio, <span class="number">3</span>), <span class="number">1</span>, <span class="number">0.1</span>);</div><div class="line">        <span class="comment">// 计算反射方向</span></div><div class="line">        <span class="comment">// compute reflection direction (not need to normalize because all vectors</span></div><div class="line">        <span class="comment">// are already normalized)</span></div><div class="line">        Vec3f refldir = raydir - nhit * <span class="number">2</span> * raydir.dot(nhit);</div><div class="line">        refldir.normalize();</div><div class="line">        Vec3f reflection = trace(phit + nhit * bias, refldir, spheres, depth + <span class="number">1</span>);<span class="comment">//递归</span></div><div class="line">        Vec3f refraction = <span class="number">0</span>;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">//此处应该包含前面的折射代码</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">          <span class="comment">// the result is a mix of reflection and refraction (if the sphere is transparent)</span></div><div class="line">          <span class="comment">//结果混合折射和反射</span></div><div class="line">        surfaceColor = (reflection * fresneleffect + refraction * (<span class="number">1</span> - fresneleffect) * sphere-&gt;transparency)</div><div class="line">         * sphere-&gt;surfaceColor;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p><img src="https://www.scratchapixel.com/images/upload/ray-simple-shapes/impsurf-normal.png?" alt="hit"></p>
+<h4 id="3-（高光Phong-Model）-I-spec-K-s-I-p-cos-n-left-phi-right-K-s-I-p-left-vec-R-cdot-vec-V-right-n"><a href="#3-（高光Phong-Model）-I-spec-K-s-I-p-cos-n-left-phi-right-K-s-I-p-left-vec-R-cdot-vec-V-right-n" class="headerlink" title="3. （高光Phong Model）$I{spec}=K{s}I{p}\cos^{n}\left( \phi \right)=K{s}I_{p}\left( \vec{R}\cdot\vec{V} \right)^{n}$"></a>3. （高光Phong Model）$I<em>{spec}=K</em>{s}I<em>{p}\cos^{n}\left( \phi \right)=K</em>{s}I_{p}\left( \vec{R}\cdot\vec{V} \right)^{n}$</h4><p><img src="http://img.blog.csdn.net/20170921120555617?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="specular"></p>
+<p>$K_{s}$代表表面高光反射率</p>
+<p>$I_{p}$代表之前的点光源强度</p>
+<p>n代表高光反射参数 设绝对高光镜面（即反射所有光线）为无穷</p>
+<p><img src="http://img.blog.csdn.net/20170921120511771?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="specular table"></p>
+<p>以此我们可以看得出  当在交点以法向量做判断求 反射光线如果能返回到光源  则这个区域都是高光区域如下图所示</p>
+<p><img src="http://img.blog.csdn.net/20170921120329241?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="gaoguang"></p>
+<hr>
+<p>当高光说完之后  我们对整个光照方程应该有了一个较为清晰的认识  在我之前的博客中也讲过Phone光照模型</p>
+<script type="math/tex; mode=display">I=I_{amb}+I_{diff}+I_{spec}=k_{a}I_{a}+I_{i}\left ( k_{d}\left ( \vec{L}\cdot \vec{N}  \right )+k_{s} \left ( \vec{V}\cdot \vec{R} \right )^{n} \right )</script><hr>
+<h3 id="Snell’s-Law-折射定律"><a href="#Snell’s-Law-折射定律" class="headerlink" title="Snell’s Law(折射定律)"></a>Snell’s Law(折射定律)</h3><script type="math/tex; mode=display">\frac{\sin \Theta _{1}}{\sin \Theta _{2}}= \frac{v1}{v2} =\frac{n1}{n2}</script><script type="math/tex; mode=display">n_{air}\sin_{i}=n_{glass}sin\Theta_{t}</script><p>我们看到不同介质的折射率是不同的  </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//如果球是透明  计算折射光线</span></div><div class="line">    <span class="keyword">if</span> (sphere-&gt;transparency) &#123;</div><div class="line">        <span class="keyword">float</span> ior = <span class="number">1.1</span>, eta = (inside) ? ior : <span class="number">1</span> / ior; <span class="comment">// are we inside or outside the surface?</span></div><div class="line">        <span class="keyword">float</span> cosi = -nhit.dot(raydir);</div><div class="line">        <span class="keyword">float</span> k = <span class="number">1</span> - eta * eta * (<span class="number">1</span> - cosi * cosi);</div><div class="line">        <span class="comment">//1-(eta*sin(i))^2</span></div><div class="line">        Vec3f refrdir = raydir * eta + nhit * (eta *  cosi - <span class="built_in">sqrt</span>(k));</div><div class="line">        refrdir.normalize();</div><div class="line">        refraction = trace(phit - nhit * bias, refrdir, spheres, depth + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// the result is a mix of reflection and refraction (if the sphere is transparent)</span></div><div class="line">    surfaceColor = (</div><div class="line">        reflection * fresneleffect +</div><div class="line">        refraction * (<span class="number">1</span> - fresneleffect) * sphere-&gt;transparency) * sphere-&gt;surfaceColor;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// the result is a mix of reflection and refraction (if the sphere is transparent)</span></div><div class="line">    surfaceColor = (reflection * fresneleffect + refraction * (<span class="number">1</span> - fresneleffect) * sphere-&gt;transparency)</div><div class="line">     * sphere-&gt;surfaceColor;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>当然还有很多可以细化的地方 比如高光的边缘可以有更多的虚化效果  还有不同材质的追踪效果  这些进阶的光线追踪处理方法  我们在下篇文章介绍</p>
+<hr>
+<p>用以下一个伪代码来说明一下光线追踪的过程</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> each pixel of the screen</div><div class="line"><span class="comment">//循环 视平面中的每个像素</span></div><div class="line">&#123;</div><div class="line">	Final color = <span class="number">0</span>;</div><div class="line">    Ray = &#123; starting point, direction &#125;;<span class="comment">// 常见的三维矢量 描述起点的位置 和光线的方向</span></div><div class="line">      	Repeat</div><div class="line">	  &#123;</div><div class="line">		<span class="keyword">for</span> each object in the scene <span class="comment">//循环 场景中 物体</span></div><div class="line">          	&#123;</div><div class="line">                 	determine closest ray object/intersection;</div><div class="line">					 <span class="comment">//判定最近的和光线相交的物体  </span></div><div class="line">          	&#125;</div><div class="line">     	<span class="keyword">if</span> intersection exists<span class="comment">//如果相交存在</span></div><div class="line">      	&#123;</div><div class="line">             	<span class="keyword">for</span> each light in the scene<span class="comment">//对场景中的每一束光</span></div><div class="line">             	&#123;</div><div class="line">                    	<span class="keyword">if</span> the light is <span class="keyword">not</span> in shadow of another object<span class="comment">//如果光不在其他物体的影子内</span></div><div class="line">                    	&#123;</div><div class="line">                           	add <span class="keyword">this</span> light contribution to computed color;<span class="comment">//添加这束光的采样到已经计算的颜色中</span></div><div class="line">                    	&#125;</div><div class="line">		        &#125;</div><div class="line">     	&#125;</div><div class="line">      	Final color = Final color + computed color * previous </div><div class="line">        <span class="comment">//  最终的颜色+=已经计算的颜色*之前的颜色</span></div><div class="line">        reflection factor;<span class="comment">//反射系数</span></div><div class="line">      	reflection factor = reflection factor * surface reflectionproperty;</div><div class="line">		<span class="comment">//反射系数*=表面反射属性</span></div><div class="line">      	increment depth;</div><div class="line">		<span class="comment">//深度增量</span></div><div class="line">      &#125; until reflection factor is <span class="number">0</span> <span class="keyword">or</span> maximumdepth is reached</div><div class="line">	  <span class="comment">//直到反射系数为零或者到达最大值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="有了这段伪代码我们算是能够在一定程度上了解了光线追踪的过程-但是并不直观-也并不易懂-光线追踪的内核"><a href="#有了这段伪代码我们算是能够在一定程度上了解了光线追踪的过程-但是并不直观-也并不易懂-光线追踪的内核" class="headerlink" title="有了这段伪代码我们算是能够在一定程度上了解了光线追踪的过程  但是并不直观  也并不易懂 光线追踪的内核"></a>有了这段伪代码我们算是能够在一定程度上了解了光线追踪的过程  但是并不直观  也并不易懂 光线追踪的内核</h4><p>我们用一段代码来帮助我们理解一下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">render</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Sphere&gt; &amp;spheres)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">unsigned</span> width = <span class="number">640</span>, height = <span class="number">320</span>;</div><div class="line">    Vec3f *image = <span class="keyword">new</span> Vec3f[width * height], *pixel = image;</div><div class="line">    <span class="keyword">float</span> invWidth = <span class="number">1</span> / <span class="keyword">float</span>(width), invHeight = <span class="number">1</span> / <span class="keyword">float</span>(height);</div><div class="line">    <span class="keyword">float</span> fov = <span class="number">30</span>, aspectratio = width / <span class="keyword">float</span>(height);</div><div class="line">    <span class="keyword">float</span> angle = <span class="built_in">tan</span>(M_PI * <span class="number">0.5</span> * fov / <span class="number">180.</span>);</div><div class="line">    <span class="comment">// Trace rays</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> y = <span class="number">0</span>; y &lt; height; ++y) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">unsigned</span> x = <span class="number">0</span>; x &lt; width; ++x, ++pixel) &#123;</div><div class="line">             <span class="comment">//像素遍历</span></div><div class="line">            <span class="keyword">float</span> xx = (<span class="number">2</span> * ((x + <span class="number">0.5</span>) * invWidth) - <span class="number">1</span>) * angle * aspectratio;</div><div class="line">            <span class="keyword">float</span> yy = (<span class="number">1</span> - <span class="number">2</span> * ((y + <span class="number">0.5</span>) * invHeight)) * angle;</div><div class="line">            <span class="comment">//坐标转化</span></div><div class="line">            <span class="function">Vec3f <span class="title">raydir</span><span class="params">(xx, yy, <span class="number">-1</span>)</span></span>;</div><div class="line">            <span class="comment">//方向</span></div><div class="line">            raydir.normalize();</div><div class="line">          <span class="comment">//  cout&lt;&lt;" x: "&lt;&lt;x&lt;&lt;" y: "&lt;&lt;y&lt;&lt;endl;</span></div><div class="line">            *pixel = trace(Vec3f(<span class="number">0</span>), raydir, spheres, <span class="number">0</span>);</div><div class="line">            <span class="comment">//递归追踪  递增深度也就是上面伪代码中的</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">     <span class="comment">//完成追踪 缓存写入文件</span></div><div class="line">    <span class="comment">// Save result to a PPM image (keep these flags if you compile under Windows)</span></div><div class="line">    <span class="built_in">std</span>::<span class="function">ofstream <span class="title">ofs</span><span class="params">(<span class="string">"./untitledHD.ppm"</span>, <span class="built_in">std</span>::ios::out | <span class="built_in">std</span>::ios::binary)</span></span>;</div><div class="line">    ofs &lt;&lt; <span class="string">"P6\n"</span> &lt;&lt; width &lt;&lt; <span class="string">" "</span> &lt;&lt; height &lt;&lt; <span class="string">"\n255\n"</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> i = <span class="number">0</span>; i &lt; width * height; ++i) &#123;</div><div class="line">        ofs &lt;&lt; (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(<span class="built_in">std</span>::min(<span class="keyword">float</span>(<span class="number">1</span>), image[i].x) * <span class="number">255</span>) &lt;&lt;</div><div class="line">               (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(<span class="built_in">std</span>::min(<span class="keyword">float</span>(<span class="number">1</span>), image[i].y) * <span class="number">255</span>) &lt;&lt;</div><div class="line">               (<span class="keyword">unsigned</span> <span class="keyword">char</span>)(<span class="built_in">std</span>::min(<span class="keyword">float</span>(<span class="number">1</span>), image[i].z) * <span class="number">255</span>);</div><div class="line"></div><div class="line">            <span class="comment">//    cout&lt;&lt;"Pixel ID"&lt;&lt;i &lt;&lt;"Red : "&lt;&lt; (unsigned char)(std::min(float(1), image[i].x) * 255) &lt;&lt;</span></div><div class="line">            <span class="comment">//    "Green : "&lt;&lt;(unsigned char)(std::min(float(1), image[i].y) * 255) &lt;&lt;</span></div><div class="line">            <span class="comment">//    "Blue : "&lt;&lt;(unsigned char)(std::min(float(1), image[i].z) * 255)&lt;&lt;endl;</span></div><div class="line">            <span class="comment">//输出像素ID和颜色值</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    ofs.close();</div><div class="line">    <span class="keyword">delete</span> [] image;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还有一个可能会引起疑惑的问题<br>光源定义：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;Sphere&gt; spheres;</div><div class="line"><span class="comment">// position, radius, surface color, reflectivity, transparency, emission color</span></div><div class="line">spheres.push_back(Sphere(Vec3f( <span class="number">0.0</span>, <span class="number">-10004</span>, <span class="number">-20</span>), <span class="number">10000</span>, Vec3f(<span class="number">0.20</span>, <span class="number">0.20</span>, <span class="number">0.20</span>), <span class="number">0</span>, <span class="number">0.0</span>));</div><div class="line">spheres.push_back(Sphere(Vec3f( <span class="number">0.0</span>,      <span class="number">0</span>, <span class="number">-20</span>),     <span class="number">4</span>, Vec3f(<span class="number">1.00</span>, <span class="number">0.32</span>, <span class="number">0.36</span>), <span class="number">1</span>, <span class="number">0.5</span>));</div><div class="line">spheres.push_back(Sphere(Vec3f( <span class="number">5.0</span>,     <span class="number">-1</span>, <span class="number">-15</span>),     <span class="number">2</span>, Vec3f(<span class="number">0.90</span>, <span class="number">0.76</span>, <span class="number">0.46</span>), <span class="number">1</span>, <span class="number">0.0</span>));</div><div class="line">spheres.push_back(Sphere(Vec3f( <span class="number">5.0</span>,      <span class="number">0</span>, <span class="number">-25</span>),     <span class="number">3</span>, Vec3f(<span class="number">0.65</span>, <span class="number">0.77</span>, <span class="number">0.97</span>), <span class="number">1</span>, <span class="number">0.0</span>));</div><div class="line">spheres.push_back(Sphere(Vec3f(<span class="number">-5.5</span>,      <span class="number">0</span>, <span class="number">-15</span>),     <span class="number">3</span>, Vec3f(<span class="number">0.90</span>, <span class="number">0.90</span>, <span class="number">0.90</span>), <span class="number">1</span>, <span class="number">0.0</span>));</div><div class="line"><span class="comment">// light 最后这项就是光源  </span></div><div class="line">spheres.push_back(Sphere(Vec3f( <span class="number">0.0</span>,     <span class="number">20</span>, <span class="number">-30</span>),     <span class="number">3</span>, Vec3f(<span class="number">0.00</span>, <span class="number">0.00</span>, <span class="number">0.00</span>), <span class="number">0</span>, <span class="number">0.0</span>, Vec3f(<span class="number">3</span>)));</div></pre></td></tr></table></figure></p>
+<p>所以最后判断光线回到光源需要递归的次数来确定相交点的颜色 最后：<br><img src="http://img.blog.csdn.net/20170921122152737?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>在此基础上  基础性代码里没有完成的例如 </p>
+<ul>
+<li>对复杂几何网格的追踪， </li>
+<li>对含有不同材质，纹理的追踪，</li>
+<li>BRDF双向反射分布函数 </li>
+<li>焦散</li>
+</ul>
+<p>等等<br>我们将在下个文章中详细说明。</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/CG-Ray-tracer/" class="button small">CG-Ray tracer</a>
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>留言:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                Winshare.tech
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/winshare.tom/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/OOXXXXOO/" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="tanwenxuan@live.com/" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'www-winshare-tech';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
