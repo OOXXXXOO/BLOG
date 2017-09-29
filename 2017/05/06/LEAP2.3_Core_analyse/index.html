@@ -176,7 +176,7 @@
 <h1 id="first-基础"><a href="#first-基础" class="headerlink" title="first  基础"></a>first  基础</h1><hr>
 <p>准备阶段：</p>
 <p><a href="https://developer.leapmotion.com/getting-started/unity" title="start" target="_blank" rel="external">https://developer.leapmotion.com/getting-started/unity</a></p>
-<p>当然是download everything___<br>准备工具包括:</p>
+<p>当然是download everything<em>_</em><br>准备工具包括:</p>
 <p>unity（最好5.0以上版本）</p>
 <p><a href="http://unity3d.com/cn/get-unity/download" title="unity 下载" target="_blank" rel="external">http://unity3d.com/cn/get-unity/download</a></p>
 <p>leapmotion应用&amp;SDK</p>
@@ -288,7 +288,7 @@ class Program
 <p>是不是看到了两个小小的手！！！！</p>
 <p>是这样  unity和各个三维文件之间的单位换算有着区别因此我们如果想看见一双正常的手  要么把摄像机拉近拉的离控制器更近<br>要么把   控制器的scale参数调大  （为了方便计算，十的整数倍的倍率比较好）</p>
 <p>OK我们终于能看到了写一个unity程序的<strong>入门之法</strong>了</p>
-<p></p>
+<p>&lt;/id=3&gt;</p>
 <p><img src="http://img.blog.csdn.net/20151129160217473" alt="sandbox"></p>
 <p>在unity的core  Asset下我们可以看到很多的demo 。这些demo给我们提供了很多思路，其下的脚本也很有参考性。<br>其中某些写法对我们构建程序来说，有着很强大的指导意义。</p>
 <p>甚至对于一些代码经验贫乏的童鞋来说 根本不用自己写代码  仅仅靠ctrl+c&amp;ctrl+v就可以创建一个demo来完成某些功能</p>
@@ -466,8 +466,7 @@ Screen.height = Camera.pixelHeigth
 <blockquote>
 <p>343074971</p>
 </blockquote>
-<p>###第四点：</p>
-<p>####缩放手势<br>我对这个功能的编写出现了很多延伸版本<br>一开始的想法是  调用上一帧  和这一帧的双手位置进行计算    差值为正则放大  差值为负则缩小<br>但是我显然高估了我对执行顺序的把控能力  基本上这个思路需要脚本的控制能力达到炉火纯青的地步才会写对  后期  对数据的检查发现   这个差距实在是太小以及上一帧的数据重复性导致的判断进程根本无法控制</p>
+<h3 id="第四点："><a href="#第四点：" class="headerlink" title="第四点："></a>第四点：</h3><h4 id="缩放手势"><a href="#缩放手势" class="headerlink" title="缩放手势"></a>缩放手势</h4><p>我对这个功能的编写出现了很多延伸版本<br>一开始的想法是  调用上一帧  和这一帧的双手位置进行计算    差值为正则放大  差值为负则缩小<br>但是我显然高估了我对执行顺序的把控能力  基本上这个思路需要脚本的控制能力达到炉火纯青的地步才会写对  后期  对数据的检查发现   这个差距实在是太小以及上一帧的数据重复性导致的判断进程根本无法控制</p>
 <p>后来又想了一个双手向量相加取模的类似的想法  但是也因为精度等等  原因  失败</p>
 <p>经过多次的 实验  测试  记录   我发现  270是一个比较合适的  取值<br>因此 针对双手的绝对距离  来设计这个缩放手势</p>
 <p>最后又发现  这个方式不符合人的操作 又返回对比相对值的思路   最后  更改了  leap的传值方式   在当前帧  计算   前一帧得手的距离   和当前帧  手的距离  进行对比  最后实现了一个  比较好的结果</p>
@@ -484,7 +483,7 @@ Screen.height = Camera.pixelHeigth
 <li>不要相信官方宣传的精度  shit~</li>
 </ol>
 <hr>
-<p>#很<br>抱歉的是，之前说的LEAP/UI框架设计可能只有两篇   因为个人时间实在是不允许 这个问题如果展开去写的话  那么说写本书都是不为过的   且因为内容修改很是杂乱  所以我第一篇文章用来介绍LEAP预置ＵＩ的结构第二篇用来讲How to design&amp;build~</p>
+<h1 id="很"><a href="#很" class="headerlink" title="很"></a>很</h1><p>抱歉的是，之前说的LEAP/UI框架设计可能只有两篇   因为个人时间实在是不允许 这个问题如果展开去写的话  那么说写本书都是不为过的   且因为内容修改很是杂乱  所以我第一篇文章用来介绍LEAP预置ＵＩ的结构第二篇用来讲How to design&amp;build~</p>
 <hr>
 <p>鉴于直接涉及交互问题 因此这篇文章的受众显得很尴尬  但是相信   认真按照我之前博客学习的同学都能够理解其中的意思</p>
 <blockquote>
@@ -625,8 +624,7 @@ Screen.height = Camera.pixelHeigth
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">protected virtual void FixedUpdate()</div><div class="line">&#123;</div><div class="line">  if (m_target == null &amp;&amp; State == LeapPhysicsState.Interacting)</div><div class="line">  &#123;</div><div class="line">    State = LeapPhysicsState.Reflecting;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  switch (State)</div><div class="line">  &#123;</div><div class="line">    case LeapPhysicsState.Interacting://交互状态</div><div class="line">      ApplyInteractions();</div><div class="line">      break;</div><div class="line">    case LeapPhysicsState.Reflecting://从交互状态返回正常状态</div><div class="line">      ApplyPhysics();</div><div class="line">      break;</div><div class="line">    case LeapPhysicsState.Disabled://关闭（正常）状态</div><div class="line">      break;</div><div class="line">    default:</div><div class="line">      break;</div><div class="line">  &#125;</div><div class="line">  ApplyConstraints();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这是一个大写的清晰明了  之前对State枚举类型在这里一下就亮了<br>用Switch来确定状态执行相应状态的方法集</p>
 <p>至此  总分总式的把Solider说完了  已经  洋洋洒洒的说了1w字了  那么  我就继续吧</p>
-<p>#滚轮/表盘（Dial）</p>
-<p>照例先看图：<br><img src="http://img.blog.csdn.net/20160406132608755" alt="dial"></p>
+<h1 id="滚轮-表盘（Dial）"><a href="#滚轮-表盘（Dial）" class="headerlink" title="滚轮/表盘（Dial）"></a>滚轮/表盘（Dial）</h1><p>照例先看图：<br><img src="http://img.blog.csdn.net/20160406132608755" alt="dial"></p>
 <hr>
 <p>从trigger的网格来看就非常的复杂  所以要是自己想设计一个这种手势操作的UI组件  可以说难度<strong>非常</strong>大<br>并且  坦白说 这个组件如果不经过自定义或者修改非常的华而不实 因为  他的选项实在是太多了  多到你手退出操作区域的时候   都会产生误操作</p>
 <p>那么我们就先从可见外观结构说起</p>
