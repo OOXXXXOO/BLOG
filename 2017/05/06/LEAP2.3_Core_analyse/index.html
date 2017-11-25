@@ -1,137 +1,255 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html>
 <head>
+  <meta charset="utf-8">
+  
+  <title>leap motion  core asstet 2.3 full analyse | Winshare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Gesture tracking" />
+  
+  
+  
+  
+  <meta name="description" content="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：  基础   环境搭建  场景创建    核心组件使用   sdk使用   脚本编写与功能实现方法   代码优化   UI交互部分">
+<meta name="keywords" content="Gesture tracking">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LEAP MOTION  Core Asstet 2.3 Full Analyse">
+<meta property="og:url" content="http://winshare.tech/2017/05/06/LEAP2.3_Core_analyse/index.html">
+<meta property="og:site_name" content="Winshare">
+<meta property="og:description" content="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：  基础   环境搭建  场景创建    核心组件使用   sdk使用   脚本编写与功能实现方法   代码优化   UI交互部分">
+<meta property="og:image" content="https://developer-china-cdn.leapmotion.com/documentation/images/Leap_horizontalViewAngle.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20151129160059249">
+<meta property="og:image" content="http://img.blog.csdn.net/20151129160123533">
+<meta property="og:image" content="http://img.blog.csdn.net/20151129160203161">
+<meta property="og:image" content="http://img.blog.csdn.net/20151129160217473">
+<meta property="og:image" content="http://img.blog.csdn.net/20151129160240349">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208181219171">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208181853700">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208182959282">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208183056443">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208201852420">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208205029247">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208210218188">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208212129717">
+<meta property="og:image" content="http://img.blog.csdn.net/20151208212213463">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224151423578">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224152016075">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224152031781">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224152220792">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224160816739">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224161330716">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224174029066">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224174830116">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224181508995">
+<meta property="og:image" content="http://img.blog.csdn.net/20151224182317587">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402140510351">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402143737067">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402144717758">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402145227994">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402150248795">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402201855668">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402202048263">
+<meta property="og:image" content="http://img.blog.csdn.net/20160402204623538">
+<meta property="og:image" content="http://img.blog.csdn.net/20160404172408789">
+<meta property="og:image" content="http://img.blog.csdn.net/20160404173501246">
+<meta property="og:image" content="http://img.blog.csdn.net/20160406123735485">
+<meta property="og:image" content="http://img.blog.csdn.net/20160406132608755">
+<meta property="og:image" content="http://img.blog.csdn.net/20160406135032436">
+<meta property="og:image" content="http://img.blog.csdn.net/20160406135603454">
+<meta property="og:image" content="http://img.blog.csdn.net/20160406141206710">
+<meta property="og:image" content="http://img.blog.csdn.net/20160406142121526">
+<meta property="og:image" content="http://img.blog.csdn.net/20160406144504223">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518152045320">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518153740720">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518155344160">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518155625164">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518160830061">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518161600190">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518164452635">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518164514982">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518171954133">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518172424139">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518172803520">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518173715723">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518181646115">
+<meta property="og:image" content="http://img.blog.csdn.net/20160518182537164">
+<meta property="og:updated_time" content="2017-11-25T14:08:50.642Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LEAP MOTION  Core Asstet 2.3 Full Analyse">
+<meta name="twitter:description" content="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：  基础   环境搭建  场景创建    核心组件使用   sdk使用   脚本编写与功能实现方法   代码优化   UI交互部分">
+<meta name="twitter:image" content="https://developer-china-cdn.leapmotion.com/documentation/images/Leap_horizontalViewAngle.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Winshare" type="application/atom+xml">
+  
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
 
-    <!--Description-->
-    
-        <meta name="description" content="Research about HCI/CG/VR/AR">
-    
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-    <!--Author-->
-    
-        <meta name="author" content="Tom winshare">
-    
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
 
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="LEAP MOTION  Core Asstet 2.3 Full Analyse"/>
-    
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
 
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Winshare"/>
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
 
-    <!--Page Cover-->
-    
-        <meta property="og:image" content="undefined"/>
-    
+  
 
-    <!-- Title -->
-    
-    <title>LEAP MOTION  Core Asstet 2.3 Full Analyse - Winshare</title>
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
-
-    <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
-    <![endif]-->
-
-    <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
-    <![endif]-->
-
-    <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
-    
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-98667296-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-
-
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
 
 </head>
 
-<body>
 
-    <div id="wrapper">
 
-        <!-- Menu -->
-        <!-- Header -->
-<header id="header">
-    <div class="inner">
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
-        <!-- Logo -->
-        <a href="/" class="logo">
-            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Winshare</span>
-        </a>
 
-        <!-- Nav -->
-        <nav>
-            <ul>
-                <li><a href="#menu">Menu</a></li>
-            </ul>
-        </nav>
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
 </header>
 
-<!-- Menu -->
-<nav id="menu">
-    <h2>Menu</h2>
-    <ul>
+
+
+      
+            
+      <div id="content" class="outer">
         
-            <li>
-                <a href="/">Home</a>
-            </li>
+          <section id="main" style="float:none;"><article id="post-LEAP2.3_Core_analyse" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
         
-            <li>
-                <a href="/archives">Archives</a>
-            </li>
-        
-            <li>
-                <a href="/about">About</a>
-            </li>
-        
-    </ul>
-</nav>
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      LEAP MOTION  Core Asstet 2.3 Full Analyse
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/05/06/LEAP2.3_Core_analyse/" class="article-date">
+	  <time datetime="2017-05-06T10:44:48.247Z" itemprop="datePublished">2017-05-06</time>
+	</a>
 
-        <div id="main">
-            <div class="inner">
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
 
-                <!-- Main Content -->
-                
-
-    <h1>LEAP MOTION  Core Asstet 2.3 Full Analyse</h1>
-
-
-    <span class="image main"><img src="http://img.zcool.cn/community/015f24579f496c0000018c1b8903bd.png@900w_1l_2o_100sh.jpg" alt="" /></span>
-
-
-<!-- Gallery -->
-
-
-<!-- Content -->
-<h3 id="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："><a href="#本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：" class="headerlink" title="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："></a>本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：</h3><hr>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："><a href="#本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：" class="headerlink" title="本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："></a>本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：</h3><hr>
 <ul>
 <li><a href="http://blog.csdn.net/admintan/article/details/49980029" target="_blank" rel="external">基础</a></li>
 </ul>
@@ -157,6 +275,7 @@
 <li><a href="#8">UI交互部分</a></li>
 </ul>
 <hr>
+<a id="more"></a>
 <blockquote>
 <p>特：本人水平有限所以有错误请指正<br>本人也会引用一些代码  如果有所侵犯请联系删除</p>
 <p>自2015.11.22开始周更</p>
@@ -762,124 +881,284 @@ Screen.height = Camera.pixelHeigth
 <p>后续将更新</p>
 <p>欢迎支持</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
 
-<!-- Tags -->
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
 
 
 
-<div class="tags">
-    <a href="/tags/Gesture-tracking/" class="button small">Gesture tracking</a>
-</div>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gesture-tracking/">Gesture tracking</a></li></ul>
 
-
-
-<!-- Comments -->
-<div>
+    </footer>
+  </div>
+  
     
-    <hr />
-    <h3>留言:</h3>
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<nav id="article-nav">
+  
+    <a href="/2017/05/06/Video/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Media Support
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/06/《Unity Shader 与 计算机图形学》第一章/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">unity &amp; Computer graphics Chapter(1)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题："><span class="nav-number">1.</span> <span class="nav-text">本系列文章将会从一个初学者的脚步去讲解unity和leapmotion协同开发的一系列问题：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分基-基础"><span class="nav-number"></span> <span class="nav-text">第一部分基-基础</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#first-基础"><span class="nav-number"></span> <span class="nav-text">first  基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Now，just-do-it"><span class="nav-number"></span> <span class="nav-text">Now，just do it.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二部分：环境搭建"><span class="nav-number">1.</span> <span class="nav-text">第二部分：环境搭建</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1，核心组件的使用。"><span class="nav-number"></span> <span class="nav-text">1，核心组件的使用。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#（1）-handcontroller（以下简化为hc）"><span class="nav-number"></span> <span class="nav-text">（1）.handcontroller（以下简化为hc）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#（2）-SCENCE"><span class="nav-number"></span> <span class="nav-text">（2）.SCENCE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本周着重开始讲解leap开发中的实际问题"><span class="nav-number">1.</span> <span class="nav-text">本周着重开始讲解leap开发中的实际问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（其中值得注意的是：-swipe-和keytap这两个手势互相干扰非常严重-所以我们需要注意-这两个预制手势的共同使用是相当糟糕的）"><span class="nav-number">1.1.</span> <span class="nav-text">（其中值得注意的是：  swipe 和keytap这两个手势互相干扰非常严重  所以我们需要注意  这两个预制手势的共同使用是相当糟糕的）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本周-我们着重将讲解代码的优化问题"><span class="nav-number">1.2.</span> <span class="nav-text">本周  我们着重将讲解代码的优化问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一点："><span class="nav-number">2.</span> <span class="nav-text">第一点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二点："><span class="nav-number">3.</span> <span class="nav-text">第二点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#awake"><span class="nav-number">3.1.</span> <span class="nav-text">awake</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三点-："><span class="nav-number">4.</span> <span class="nav-text">第三点 ：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触发网格"><span class="nav-number">4.1.</span> <span class="nav-text">触发网格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三点："><span class="nav-number">5.</span> <span class="nav-text">第三点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UI"><span class="nav-number">5.1.</span> <span class="nav-text">UI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四点："><span class="nav-number">6.</span> <span class="nav-text">第四点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缩放手势"><span class="nav-number">6.1.</span> <span class="nav-text">缩放手势</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后："><span class="nav-number"></span> <span class="nav-text">最后：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#很"><span class="nav-number"></span> <span class="nav-text">很</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1，触发式操作"><span class="nav-number">1.</span> <span class="nav-text">1，触发式操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2，手势操作（下一期）"><span class="nav-number">2.</span> <span class="nav-text">2，手势操作（下一期）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3，映射性操作（下一期）"><span class="nav-number">3.</span> <span class="nav-text">3，映射性操作（下一期）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预警：这篇文章very-very-long"><span class="nav-number"></span> <span class="nav-text">预警：这篇文章very very long~~</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#入门："><span class="nav-number"></span> <span class="nav-text">入门：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SENCES"><span class="nav-number"></span> <span class="nav-text">SENCES</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#当我们把这四种prefab拖入场景加以调整"><span class="nav-number">1.</span> <span class="nav-text">当我们把这四种prefab拖入场景加以调整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-最简单的scrolltext-可滑动的字体"><span class="nav-number">2.</span> <span class="nav-text">1.最简单的scrolltext\可滑动的字体</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-按钮"><span class="nav-number"></span> <span class="nav-text">2.按钮</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义按钮样式替换元素-gt-继承以重用脚本设计-gt-自定义触发操作-gt-完成"><span class="nav-number">1.</span> <span class="nav-text">自定义按钮样式替换元素 ->继承以重用脚本设计->自定义触发操作->完成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结："><span class="nav-number"></span> <span class="nav-text">总结：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-滑动条（slider）"><span class="nav-number"></span> <span class="nav-text">3.滑动条（slider）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#滚轮-表盘（Dial）"><span class="nav-number"></span> <span class="nav-text">滚轮/表盘（Dial）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#从这开始就开始有意思了起来"><span class="nav-number">1.</span> <span class="nav-text">从这开始就开始有意思了起来</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较有趣"><span class="nav-number">1.1.</span> <span class="nav-text">比较有趣</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#至此"><span class="nav-number"></span> <span class="nav-text">至此</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bye-See-you-next-month"><span class="nav-number"></span> <span class="nav-text">Bye~ See you next month~</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#过了这么久才来更这篇实在是因为项目工程量实在是不允许"><span class="nav-number">1.</span> <span class="nav-text">过了这么久才来更这篇实在是因为项目工程量实在是不允许</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OK"><span class="nav-number"></span> <span class="nav-text">OK~</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#所以"><span class="nav-number">1.</span> <span class="nav-text">所以</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number"></span> <span class="nav-text">最后</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#射线"><span class="nav-number">1.</span> <span class="nav-text">射线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先"><span class="nav-number">1.1.</span> <span class="nav-text">首先</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其二"><span class="nav-number"></span> <span class="nav-text">其二</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#要把控制器的坐标也算进去才能保证你的射线是从指尖发出去的"><span class="nav-number"></span> <span class="nav-text">要把控制器的坐标也算进去才能保证你的射线是从指尖发出去的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#至此-1"><span class="nav-number"></span> <span class="nav-text">至此</span></a>
+    
     </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
 
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Winshare All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
 
-
-</div>
-
-
-
-            </div>
-        </div>
-
-        <!-- Footer -->
-<footer id="footer">
-    <div class="inner">
-        <section>
-            <h2>About</h2>
-            <div>
-                Winshare.tech
-            </div>
-        </section>
-        <section>
-            <h2>Follow</h2>
-            <ul class="icons">
-                
-                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
-                
-                
-                    <li><a href="https://www.facebook.com/winshare.tom/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
-                
-                
-                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
-                
-                
-                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
-                
-                
-                    <li><a href="https://github.com/OOXXXXOO/" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
-                
-                
-                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
-                
-                
-                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
-                
-                
-                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
-                
-                
-                    <li><a href="tanwenxuan@live.com/" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
-                
-                
-                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
-                
-            </ul>
-        </section>
-        <ul class="copyright">
-            <li>&copy; Untitled. All rights reserved</li>
-            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
-            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
-        </ul>
-    </div>
+		
+  </div>
 </footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
     </div>
-
-    <!-- After footer scripts -->
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
     
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
 
-<!-- skel -->
-<script src="/js/skel.min.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
 
-<!-- Custom Code -->
-<script src="/js/util.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
 
-<!--[if lte IE 8]>
-<script src="/js/ie/respond.min.js"></script>
-<![endif]-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
-<!-- Custom Code -->
-<script src="/js/main.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
 
-<!-- Gallery -->
-<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'www-winshare-tech';
-
-    (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
-</body>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '98667296', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Winshare
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Tom winshare All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
 </html>

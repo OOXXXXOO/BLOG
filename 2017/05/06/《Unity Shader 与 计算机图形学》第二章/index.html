@@ -1,137 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html>
 <head>
+  <meta charset="utf-8">
+  
+  <title>unity &amp; computer graphics chapter(2) | Winshare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="shader" />
+  
+  
+  
+  
+  <meta name="description" content="提示：本篇将会非常长~ 本系列文章分为 硬件编程入门工程实践 上一篇主要介绍了GPU的特征工作原理  以及渲染的底层流程  其实对于新架构而言还有所不同Shader描述了如何渲染物体的信息，包括：  Texture Setup、纹理设置Material Property、材质设置Render State、渲染状态Blend Setup、混合设置Pixel Shader、像素着色Vertex S">
+<meta name="keywords" content="shader">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unity &amp; Computer graphics Chapter(2)">
+<meta property="og:url" content="http://winshare.tech/2017/05/06/《Unity Shader 与 计算机图形学》第二章/index.html">
+<meta property="og:site_name" content="Winshare">
+<meta property="og:description" content="提示：本篇将会非常长~ 本系列文章分为 硬件编程入门工程实践 上一篇主要介绍了GPU的特征工作原理  以及渲染的底层流程  其实对于新架构而言还有所不同Shader描述了如何渲染物体的信息，包括：  Texture Setup、纹理设置Material Property、材质设置Render State、渲染状态Blend Setup、混合设置Pixel Shader、像素着色Vertex S">
+<meta property="og:image" content="http://img.blog.csdn.net/20161228202950468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20161228203100865?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20161228203926795?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126131407607?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20161231153456703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://p.blog.csdn.net/images/p_blog_csdn_net/cywater2000/102371/o_n2.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/746883/201603/746883-20160320162138068-1503500230.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/746883/201603/746883-20160320162152271-2111024530.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/746883/201603/746883-20160320162204553-1222989560.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/746883/201603/746883-20160320162212881-968793316.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/746883/201603/746883-20160320162230318-945939529.png">
+<meta property="og:image" content="http://image.lxway.com/upload/5/f2/5f2d81ad4bef2bb556ec63bb764da68f_thumb.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126171134789?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126183744537?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126174056120?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/746883/201603/746883-20160320162230318-945939529.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126180244050?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126184714276?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126184729088?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170126184239945?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170204151458866?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://images.cnitblog.com/blog/383191/201502/131811089648181.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/383191/201502/131811100429751.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/383191/201502/131811113084266.png">
+<meta property="og:updated_time" content="2017-11-25T14:09:02.954Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="unity &amp; Computer graphics Chapter(2)">
+<meta name="twitter:description" content="提示：本篇将会非常长~ 本系列文章分为 硬件编程入门工程实践 上一篇主要介绍了GPU的特征工作原理  以及渲染的底层流程  其实对于新架构而言还有所不同Shader描述了如何渲染物体的信息，包括：  Texture Setup、纹理设置Material Property、材质设置Render State、渲染状态Blend Setup、混合设置Pixel Shader、像素着色Vertex S">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161228202950468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+  
+    <link rel="alternate" href="/atom.xml" title="Winshare" type="application/atom+xml">
+  
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
 
-    <!--Description-->
-    
-        <meta name="description" content="Research about HCI/CG/VR/AR">
-    
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
 
-    <!--Author-->
-    
-        <meta name="author" content="Tom winshare">
-    
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
 
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="unity &amp; Computer graphics Chapter(2)"/>
-    
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
 
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Winshare"/>
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
 
-    <!--Page Cover-->
-    
-        <meta property="og:image" content="undefined"/>
-    
+  
 
-    <!-- Title -->
-    
-    <title>unity &amp; Computer graphics Chapter(2) - Winshare</title>
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/sass/main.css">
-
-    <!--[if lt IE 8]>
-        <script src="/js/ie/html5shiv.js"></script>
-    <![endif]-->
-
-    <!--[if lt IE 8]>
-        <link rel="stylesheet" href="/sass/ie8.css">
-    <![endif]-->
-
-    <!--[if lt IE 9]>
-        <link rel="stylesheet" href="/sass/ie9.css">
-    <![endif]-->
-
-    <!-- Gallery -->
-    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
-
-    <!-- Google Analytics -->
-    
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-98667296-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-
-
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
 
 </head>
 
-<body>
 
-    <div id="wrapper">
 
-        <!-- Menu -->
-        <!-- Header -->
-<header id="header">
-    <div class="inner">
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
-        <!-- Logo -->
-        <a href="/" class="logo">
-            <span class="symbol"><img src="/images/logo.svg" alt="" /></span><span class="title">Winshare</span>
-        </a>
 
-        <!-- Nav -->
-        <nav>
-            <ul>
-                <li><a href="#menu">Menu</a></li>
-            </ul>
-        </nav>
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
 
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
 </header>
 
-<!-- Menu -->
-<nav id="menu">
-    <h2>Menu</h2>
-    <ul>
+
+
+      
+            
+      <div id="content" class="outer">
         
-            <li>
-                <a href="/">Home</a>
-            </li>
+          <section id="main" style="float:none;"><article id="post-《Unity Shader 与 计算机图形学》第二章" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
         
-            <li>
-                <a href="/archives">Archives</a>
-            </li>
-        
-            <li>
-                <a href="/about">About</a>
-            </li>
-        
-    </ul>
-</nav>
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      unity &amp; Computer graphics Chapter(2)
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2017/05/06/《Unity Shader 与 计算机图形学》第二章/" class="article-date">
+	  <time datetime="2017-05-06T10:44:48.238Z" itemprop="datePublished">2017-05-06</time>
+	</a>
 
-        <div id="main">
-            <div class="inner">
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
 
-                <!-- Main Content -->
-                
-
-    <h1>unity & Computer graphics Chapter(2)</h1>
-
-
-    <span class="image main"><img src="http://img2.91.com/uploads/allimg/130418/32-13041Q50312.jpg" alt="" /></span>
-
-
-<!-- Gallery -->
-
-
-<!-- Content -->
-<hr>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
 <blockquote>
 <p>提示：本篇将会非常长~</p>
 <h1 id="本系列文章分为"><a href="#本系列文章分为" class="headerlink" title="本系列文章分为"></a>本系列文章分为</h1></blockquote>
@@ -140,6 +226,7 @@
 <hr>
 <p><strong>Texture Setup、纹理设置</strong><br><strong>Material Property、材质设置</strong><br><strong>Render State、渲染状态</strong><br><strong>Blend Setup、混合设置</strong><br><strong>Pixel Shader、像素着色</strong><br><strong>Vertex Shader、定点着色</strong><br><strong>Render Target Setup 渲染目标设置</strong></p>
 <hr>
+<a id="more"></a>
 <p>Shader并不直接和几何体相关联，因为对于同一个几何体，有可能会用不同的Shader来渲染。<br>为了简化描述我们来定义一下：<br><strong>vs: vertex shader, 顶点处理/多边形处理的</strong><br><strong>ps: pixel shader,  处理像素单位的阴影和处理相关纹理</strong><br>以上两种shader都是可编程的<br>在各自的着色器单元(Shader Unit)上，有着把各种各样的Shader程序来实现为3D图形的处理的结构。而且，作为用语，如果直接说[Programmable Shader]，有指双方（VS和PS）的情况，或者是指这个整体的概念。<br>并且，由于这个Shader程序是软件，开发者可以自己制作独创的Shader程序，就可以在GPU上实现新的图形功能。<br>但是在之前的着色器架构中无法面对任务的调节  造成闲置资源<br><img src="http://img.blog.csdn.net/20161228202950468?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 <p>而在现有的统一着色器架构下  资源配置得到了有效保障<br><img src="http://img.blog.csdn.net/20161228203100865?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYWRtaW50YW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 <hr>
@@ -242,124 +329,279 @@
 <h1 id="当然-1"><a href="#当然-1" class="headerlink" title="当然"></a>当然</h1><p>这只是凤毛菱角  函数中对于信息的计算和各种算法以及处理流程才是最重要的。而CG的入门应该在<br><a href="http://http.developer.nvidia.com/CgTutorial/cg_tutorial_chapter01.html" target="_blank" rel="external">NVIDIA_CG_page</a>这里去入门。我们主要说流程以及不同的地方。</p>
 <p>下一篇文章我们会讲解unity shader编写中怎样实现一些好的效果</p>
 <h1 id="Good-bye-Next-Month"><a href="#Good-bye-Next-Month" class="headerlink" title="Good bye Next Month~~"></a>Good bye Next Month~~</h1>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
 
-<!-- Tags -->
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
 
 
 
-<div class="tags">
-    <a href="/tags/CG-shader/" class="button small">CG-shader</a>
-</div>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shader/">shader</a></li></ul>
 
-
-
-<!-- Comments -->
-<div>
+    </footer>
+  </div>
+  
     
-    <hr />
-    <h3>留言:</h3>
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<nav id="article-nav">
+  
+    <a href="/2017/05/06/《Unity Shader 与 计算机图形学》第一章/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          unity &amp; Computer graphics Chapter(1)
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#本系列文章分为"><span class="nav-number">1.</span> <span class="nav-text">本系列文章分为</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件"><span class="nav-number">1.1.</span> <span class="nav-text">硬件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程入门"><span class="nav-number">1.2.</span> <span class="nav-text">编程入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工程实践"><span class="nav-number">1.3.</span> <span class="nav-text">工程实践</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上一篇"><span class="nav-number">2.</span> <span class="nav-text">上一篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#当然"><span class="nav-number">3.</span> <span class="nav-text">当然</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式篇前导一，纹理？材质？贴图？"><span class="nav-number">4.</span> <span class="nav-text">正式篇前导一，纹理？材质？贴图？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#材质-Material包含贴图-Map，贴图包含纹理-Texture。"><span class="nav-number">4.0.1.</span> <span class="nav-text">材质 Material包含贴图 Map，贴图包含纹理 Texture。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#纹理"><span class="nav-number">4.0.2.</span> <span class="nav-text">纹理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贴图"><span class="nav-number">4.0.3.</span> <span class="nav-text">贴图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#材质"><span class="nav-number">4.0.4.</span> <span class="nav-text">材质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Diffuse-Map"><span class="nav-number">4.0.4.1.</span> <span class="nav-text">　Diffuse Map -</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Normal-Map"><span class="nav-number">4.0.4.2.</span> <span class="nav-text">　Normal Map -</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#法线贴图的颜色为什么都这么怪？"><span class="nav-number">4.0.4.3.</span> <span class="nav-text">法线贴图的颜色为什么都这么怪？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Specular-Map"><span class="nav-number">4.0.4.4.</span> <span class="nav-text">　Specular Map -</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gloss-Map"><span class="nav-number">4.0.4.5.</span> <span class="nav-text">　Gloss Map -</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总体上说-他们都是要被shader加工的原材料"><span class="nav-number">4.0.4.6.</span> <span class="nav-text">总体上说  他们都是要被shader加工的原材料</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式篇前导二，光照模型？"><span class="nav-number">5.</span> <span class="nav-text">正式篇前导二，光照模型？  </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-当一个物体能被我们看见需要具备什么因素"><span class="nav-number">5.0.1.</span> <span class="nav-text">1.  当一个物体能被我们看见需要具备什么因素 ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-当一个物体是不同材质的时候，视觉上的区别在哪里？"><span class="nav-number">5.0.2.</span> <span class="nav-text">2.  当一个物体是不同材质的时候，视觉上的区别在哪里？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础－Phone式光照模型（Phone-reflection-model）"><span class="nav-number">5.1.</span> <span class="nav-text">基础－Phone式光照模型（Phone reflection model）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#真实世界中的光照效果抽象为三种独立的光照效果的叠加"><span class="nav-number">5.1.0.1.</span> <span class="nav-text">　真实世界中的光照效果抽象为三种独立的光照效果的叠加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1．环境光-Ambient"><span class="nav-number">5.1.0.2.</span> <span class="nav-text">1．环境光(Ambient)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2．漫反射光-Diffuse"><span class="nav-number">5.1.0.3.</span> <span class="nav-text">2．漫反射光(Diffuse)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3．镜面反射光-Specular"><span class="nav-number">5.1.0.4.</span> <span class="nav-text">3．镜面反射光(Specular)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后可得："><span class="nav-number">5.1.1.</span> <span class="nav-text">　最后可得：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正式篇第一节-扫盲"><span class="nav-number">6.</span> <span class="nav-text">正式篇第一节 扫盲</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GLSL："><span class="nav-number">6.0.1.</span> <span class="nav-text">GLSL：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CG："><span class="nav-number">6.0.2.</span> <span class="nav-text">CG：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HLSL-："><span class="nav-number">6.0.3.</span> <span class="nav-text">HLSL ：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#所以，"><span class="nav-number">6.1.</span> <span class="nav-text">所以，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二节-固定管线"><span class="nav-number">6.2.</span> <span class="nav-text">第二节-固定管线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#光"><span class="nav-number">7.</span> <span class="nav-text">光</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#现在"><span class="nav-number">8.</span> <span class="nav-text">现在</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#我们看到"><span class="nav-number">8.0.0.1.</span> <span class="nav-text">　我们看到 　</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镂空效果"><span class="nav-number">8.0.1.</span> <span class="nav-text">镂空效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个模型能够正确被显示，贴图和模型的uv坐标必须能够对应"><span class="nav-number">8.0.2.</span> <span class="nav-text">一个模型能够正确被显示，贴图和模型的uv坐标必须能够对应</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三节surface-shader"><span class="nav-number">8.1.</span> <span class="nav-text">第三节surface shader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下面"><span class="nav-number">8.1.1.</span> <span class="nav-text">下面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-渲染标签"><span class="nav-number">8.1.1.1.</span> <span class="nav-text">1.渲染标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译指令字段"><span class="nav-number">8.1.1.2.</span> <span class="nav-text">2.编译指令字段</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips：PBS"><span class="nav-number">9.</span> <span class="nav-text">Tips：PBS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shadows-and-Tessellation-附加指令以控制如何处理阴影和曲面细分。"><span class="nav-number">9.0.1.</span> <span class="nav-text">Shadows and Tessellation - .附加指令以控制如何处理阴影和曲面细分。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-定义部分"><span class="nav-number">9.0.2.</span> <span class="nav-text">3.定义部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-函数部分"><span class="nav-number">9.0.3.</span> <span class="nav-text">4.函数部分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#当然-1"><span class="nav-number">10.</span> <span class="nav-text">当然</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Good-bye-Next-Month"><span class="nav-number">11.</span> <span class="nav-text">Good bye Next Month~~</span></a></li></ol>
+    
     </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
 
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2017 Winshare All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
 
-
-</div>
-
-
-
-            </div>
-        </div>
-
-        <!-- Footer -->
-<footer id="footer">
-    <div class="inner">
-        <section>
-            <h2>About</h2>
-            <div>
-                Winshare.tech
-            </div>
-        </section>
-        <section>
-            <h2>Follow</h2>
-            <ul class="icons">
-                
-                    <li><a href="https://twitter.com/?lang=en" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
-                
-                
-                    <li><a href="https://www.facebook.com/winshare.tom/" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
-                
-                
-                    <li><a href="https://www.instagram.com/" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
-                
-                
-                    <li><a href="https://dribbble.com/" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
-                
-                
-                    <li><a href="https://github.com/OOXXXXOO/" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
-                
-                
-                    <li><a href="https://plus.google.com/" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
-                
-                
-                    <li><a href="https://www.behance.net/" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
-                
-                
-                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
-                
-                
-                    <li><a href="tanwenxuan@live.com/" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
-                
-                
-                    <li><a href="\#" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
-                
-            </ul>
-        </section>
-        <ul class="copyright">
-            <li>&copy; Untitled. All rights reserved</li>
-            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
-            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
-        </ul>
-    </div>
+		
+  </div>
 </footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
     </div>
-
-    <!-- After footer scripts -->
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
     
-<!-- jQuery -->
-<script src="/js/jquery.min.js"></script>
 
-<!-- skel -->
-<script src="/js/skel.min.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
 
-<!-- Custom Code -->
-<script src="/js/util.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
 
-<!--[if lte IE 8]>
-<script src="/js/ie/respond.min.js"></script>
-<![endif]-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
-<!-- Custom Code -->
-<script src="/js/main.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
 
-<!-- Gallery -->
-<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- Disqus Comments -->
-
-<script type="text/javascript">
-    var disqus_shortname = 'www-winshare-tech';
-
-    (function(){
-        var dsq = document.createElement('script');
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
 
-</body>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', '98667296', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Winshare
+          </div>
+          <div class="panel-body">
+            Copyright © 2017 Tom winshare All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
 </html>
