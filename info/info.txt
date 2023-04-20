@@ -1,0 +1,7 @@
+
+/mnt/usb-4e561901/clash/config.yaml
+/root/.config/clash/config.yaml
+ERRO[0000] External controller listen error: listen tcp 0.0.0.0:9090: bind: address already in use 
+ERRO[0000] Start HTTP server error: listen tcp :7890: bind: address already in use 
+ERRO[0000] Start SOCKS server error: listen tcp :7891: bind: address already in use 
+ERRO[0000] Start Redir server error: listen tcp :7892: bind: address already in use 
