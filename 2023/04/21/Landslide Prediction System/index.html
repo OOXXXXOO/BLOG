@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Tom Winshare">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://winshare.tech/2023/04/21/landslide prediction system/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Massive earthquakes in mountainous regions often lead to numerous landslides endangering human lives. Whether and where landslides can occur is a mystery. We wonder whether it is possible to single ou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LandSlide Prediction Algorithm">
+<meta property="og:url" content="http://winshare.tech/2023/04/21/Landslide%20Prediction%20System/index.html">
+<meta property="og:site_name" content="Tom Winshare Page">
+<meta property="og:description" content="Massive earthquakes in mountainous regions often lead to numerous landslides endangering human lives. Whether and where landslides can occur is a mystery. We wonder whether it is possible to single ou">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/table.png">
+<meta property="og:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/network.png">
+<meta property="og:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/input.png">
+<meta property="og:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/label.png">
+<meta property="og:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/prediction.png">
+<meta property="og:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/Figure_2.png">
+<meta property="og:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/Figure_3.png">
+<meta property="article:published_time" content="2023-04-20T17:49:27.401Z">
+<meta property="article:modified_time" content="2023-04-20T18:02:25.158Z">
+<meta property="article:author" content="Tom Winshare">
+<meta property="article:tag" content="GIS">
+<meta property="article:tag" content="ComputerVision">
+<meta property="article:tag" content="Dataset">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/table.png">
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            LandSlide Prediction Algorithm -
+        
+        Tom Winshare Page
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    <!--- Font Part-->
+    
+        <link href="" rel="stylesheet">
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+        
+            
+    
+            
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"winshare.tech","root":"/","language":"en"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":[""]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":true,"title":"recommendation","limit":3,"placeholder":"/images/Winshare_draw_A_humanoid_robot_is_making_a_hello_gesture_with_i_8da0fa2b-c8a4-4136-813c-9861132dd0f6.png","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true},"home_banner":{"enable":true,"image":{"light":"/images/Winshare_draw_A_humanoid_robot_is_making_a_hello_gesture_with_i_8da0fa2b-c8a4-4136-813c-9861132dd0f6.png","dark":"/images/Winshare_draw_A_humanoid_robot_is_making_a_hello_gesture_with_i_707efcfd-2354-4ea3-83d5-2ba5ad2a1b8b.png"},"title":"Tom Winshare Page","subtitle":{"text":["Research about Perception","Research about GIS","Research about Robotic","Research about Natural Language Process","Research about Computer Graphic"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/OOXXXXOO","instagram":null,"zhihu":null,"twitter":null,"email":"tanwenxuan@live.com"}}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":true,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.2","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Gallary":{"path":"/gallary","icon":"fa-regular fa-image"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Math":{"path":"/latex","icon":"fa-regular fa-calculator"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/OOXXXXOO"}},"Links":{"icon":"fa-regular fa-link","submenus":{"HuggingFace":"https://huggingface.co/Winshare","CSDN":"https://blog.csdn.net/admintan?type=blog","GITHUB":"https://github.com/OOXXXXOO"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tom Winshare Page" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Tom Winshare Page
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/gallary"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-image"></i>
+                                        
+                                        GALLARY
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/latex"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-calculator"></i>
+                                        
+                                        MATH
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/tags/"  >
+                                    
+                                        
+                                            <i class="fa-solid fa-tags"></i>
+                                        
+                                        TAGS
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        LINKS&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://huggingface.co/Winshare">HUGGINGFACE
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://blog.csdn.net/admintan?type=blog">CSDN
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/gallary"  >
+                             
+                                
+                                    <i class="fa-regular fa-image"></i>
+                                
+                                GALLARY
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/latex"  >
+                             
+                                
+                                    <i class="fa-regular fa-calculator"></i>
+                                
+                                MATH
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/tags/"  >
+                             
+                                
+                                    <i class="fa-solid fa-tags"></i>
+                                
+                                TAGS
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB</a>
+                            </li>
+                        
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                LINKS&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://huggingface.co/Winshare">HUGGINGFACE</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://blog.csdn.net/admintan?type=blog">CSDN</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+             
+                <div class="article-title">         
+                    <img src="/images/titile.png" alt="LandSlide Prediction Algorithm" />
+                    <h1 class="article-title-cover">LandSlide Prediction Algorithm</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Tom Winshare</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-04-21 01:49:27</span>
+        <span class="mobile">2023-04-21 01:49</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-04-21 02:02:25</span>
+            <span class="mobile">2023-04-21 02:02</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/GIS/">GIS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/source/tags/GIS/">GIS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/source/tags/ComputerVision/">ComputerVision</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/source/tags/Dataset/">Dataset</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="LandSlide-Prediction-Algorithm"><a href="#LandSlide-Prediction-Algorithm" class="headerlink" title="LandSlide Prediction Algorithm"></a>LandSlide Prediction Algorithm</h1><p>Massive earthquakes in mountainous regions often lead to numerous landslides endangering human lives. Whether and where landslides can occur is a mystery. We wonder whether it is possible to single out mountainous sites prone to landslides around major fault lines, and subsequently warn off habitation and development there.<br>To do that, we propose the deep learning of terrain structure around the 2008 Wenchuan earthquake. We convert this terrain challenge to literally an MNIST challenge familiar to most data miners. Results show that landslide area can be predicted up to <strong>~93% accuracy</strong> when the location and depth of the quake epicenter is known, or to <strong>~78% accuracy</strong> with unknown epicenter location and depth. These accuracy numbers are imperfect but already useful for disaster prevention and relief work. We are releasing this dataset to the community for further experiments. In the future, deep learning of landslides from all major earthquakes around the world may lead to much more accurate predictions.</p>
+<hr>
+<h3 id="Predict-performance"><a href="#Predict-performance" class="headerlink" title="Predict performance"></a>Predict performance</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/table.png"
+                     
+                ></p>
+<p><strong>Without auxiliary feature vector input, the model trains to 78% binary classification accuracy. When we incorporate auxiliary feature input, the classification accuracy rises sharply to 93%.</strong></p>
+<h3 id="Network-Structure-amp-Data-Process"><a href="#Network-Structure-amp-Data-Process" class="headerlink" title="Network Structure &amp; Data Process"></a>Network Structure &amp; Data Process</h3><p>We synchronized both the landslide dataset and the elevation dataset to the same ground resolution of 30 meters. Then we randomly subset both datasets to 33-by-33-pixel images. This translates to a square-kilometer region on the ground. In total we have 160,000 square kilometers in this study. 60% of the data is used for training, and 40% for validation.<br>We chose <strong>EfficientNet-B0</strong> due to its small size and excellent results.<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/network.png"
+                     
+                ><br>The auxiliary input data is a <strong>4x1 vector feature</strong> :</p>
+<ul>
+<li><strong>the distance to epicenter</strong></li>
+<li><strong>longitudinal and latitudinal angles towards epicenter</strong>(two cord values)</li>
+<li><strong>the local quake intensity</strong></li>
+</ul>
+<p>In Mercalli scale. We conducted two training-testing runs in total. The first training run does not incorporate the auxiliary input data feed, while the second run incorporates it. Their results will be compared and discussed in later sections.</p>
+<h4 id="The-Integrated-SRTM-Data-at-epicenter-Wenchuan-2018："><a href="#The-Integrated-SRTM-Data-at-epicenter-Wenchuan-2018：" class="headerlink" title="The Integrated SRTM Data at epicenter, Wenchuan 2018："></a>The Integrated SRTM Data at epicenter, Wenchuan 2018：</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/input.png"
+                     
+                ></p>
+<ul>
+<li>SRTM data &amp; Fault lines</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/label.png"
+                     
+                ></p>
+<ul>
+<li>label data in the whole Wenchuan area.</li>
+</ul>
+<h4 id="Predicition-amp-Result"><a href="#Predicition-amp-Result" class="headerlink" title="Predicition &amp; Result"></a>Predicition &amp; Result</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/prediction.png"
+                     
+                ></p>
+<p>The prediction visualization in the gis softwear.</p>
+<h4 id="Original-prediction-data"><a href="#Original-prediction-data" class="headerlink" title="Original prediction data"></a>Original prediction data</h4><p>We use two different way to generate prediction data.</p>
+<ul>
+<li>Random sample</li>
+<li>Sliding window sample</li>
+</ul>
+<p>The first way like <strong>monte carlo simulation</strong> that random generate a cordinate of point in the whole area and add prediction to sample position on the background zero-matrix.(see iamge below)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/Figure_2.png"
+                     
+                ></p>
+<p>The second way like convolution operation.The sample process like sliding window in original STRM data map, you can set different stride to make result perfect.<br>(see image below)</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://github.com/OOXXXXOO/Efficient-landslide/raw/master/resources/Figure_3.png"
+                     
+                ></p>
+<p>As comparison, the first way has more information about possibility of landslide,the secound way just faster and generate binary classification result to help people make a strategic decision directly.</p>
+<hr>
+<h3 id="Train-amp-Run"><a href="#Train-amp-Run" class="headerlink" title="Train &amp; Run"></a>Train &amp; Run</h3><p>Clone Project:</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:OOXXXXOO/Efficient-landslide.git</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="Environment-requirement："><a href="#Environment-requirement：" class="headerlink" title="Environment requirement："></a>Environment requirement：</h5><ul>
+<li><a class="link"   target="_blank" rel="noopener" href="https://www.anaconda.com/" >Anaconda <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/" >(China Option) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><a class="link"   target="_blank" rel="noopener" href="https://pytorch.org/" >Pytorch 1.1&#x2F;1.2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/" >(China Channel Option) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<p><strong>In order to simplify configuration process. you could install requirement from yml file.</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">env</span> create -f environment.yml</span><br></pre></td></tr></table></figure></div>
+<p>Then</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> activate torchbeta</span><br><span class="line">python predict_vector_intensity.py <span class="comment">#train_vector_intensity.py</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data:"></a>Data:</h3><p>Original Data is </p>
+<ul>
+<li>SRTM map : <a class="link"   target="_blank" rel="noopener" href="http://dwtkns.com/srtm30m/" >download link <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>Intensity map : <a class="link"   target="_blank" rel="noopener" href="https://earthquake.usgs.gov/earthquakes/eventpage/usp000g650/shakemap/intensity" >download link <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li>The Wenchuan Epicenter longitude and latitude (31.0°N,103.4°E)</li>
+</ul>
+<p>Preprocessed Data :</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://youngqfbr-my.sharepoint.com/:f:/g/personal/winshare_x1_tn/EjeEEp3l3qxDoJbHHVQjxDEBJpO4JwHzKjaYwoVAWHfw6Q?e=5Uez52" >OneDrive Link ( China.Hongkong Data Center ) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><strong>Tips:</strong><br>The $10^{6}$ small files I&#x2F;O has been a bottleneck in training process，append all sample data to a npy file is a greate training strategy for save you time.</p>
+<p>It is true that our study is based on the dataset from just one major earthquake and thus can be quite limited in power. Overfitting is a serious concern. However, if geologists from quake-prone countries could share landslide cataloging data after major quakes, then it is possible to train deep learning models for the whole planet. More data leads to more reliable predictions. As a baby step, we are sharing the Wenchuan landslide dataset with the research community.<br><strong>We invite everyone to try it and come up with insights.</strong></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><ul>
+<li>[1] C. Xu et al., Three (nearly) complete inventories of landslides triggered by the May 12, 2008 Wenchuan Mw 7.9 earthquake of China and their spatial distribution statistical analysis. Landslides (2014) 11: 441</li>
+<li>[2] C. Xu et al., “Revisions of the M 8.0 Wenchuan earthquake seismic intensity map based on co-seismic landslide abundance”, Natural Hazards 69(3) · December 2013</li>
+<li>[3] Jet Propulsion Laboratory, NASA. “U.S. Releases Enhanced Shuttle Land Elevation Data”, , <a class="link"   target="_blank" rel="noopener" href="https://www2.jpl.nasa.gov/srtm/index.html" >https://www2.jpl.nasa.gov/srtm/index.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> as accessed in July 2019</li>
+<li>[4] M. Tan, Q. V. Le, EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks, ICML2019</li>
+<li>[5] Y. LeCun, L. Bottou, Y. Bengio, and P. Haffner. “Gradient-based learning applied to document recognition.” Proceedings of the IEEE, 86(11):2278-2324, November 1998</li>
+<li>[6] A. Holcombe, “Farewell authors, hello contributors”, Nature 571, 147 (2019)</li>
+</ul>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> LandSlide Prediction Algorithm</li>
+        <li><strong>Author:</strong> Tom Winshare</li>
+        <li><strong>Created at:</strong> 2023-04-21 01:49:27</li>
+        
+            <li>
+                <strong>Updated at:</strong> 2023-04-21 02:02:25
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://winshare.tech/2023/04/21/Landslide Prediction System/
+        </li>
+        <li>
+            <strong>License:</strong> This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/source/tags/GIS/">#GIS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/source/tags/ComputerVision/">#ComputerVision</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/source/tags/Dataset/">#Dataset</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            <div class="recommended-article">
+  <div class="recommended-article-header">
+    <i aria-hidden="true"></i><span>recommendation</span>
+  </div>
+  <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/04/19/Natural language models and strategic command systems/" title="Natural language models and strategic command systems" rel="bookmark">
+  <img src="/images/v2-3ac1ca84e58757cf9ae28c83b053f08d_1440w.jpg" alt="Natural language models and strategic command systems">
+  <span class="title">Natural language models and strategic command systems</span>
+</a><a class="recommended-article-item" href="/2023/04/21/The Satellite Imagery DataSet Toolkit/" title="Natural language models and strategic command systems" rel="bookmark">
+  <img src="/images/remote.jpg" alt="Natural language models and strategic command systems">
+  <span class="title">Natural language models and strategic command systems</span>
+</a><a class="recommended-article-item" href="/2023/04/21/CPP_Python Code Inference/" title="MakeFile.Python & C++ Programe Toturial" rel="bookmark">
+  <img src="/images/C-Language2.png" alt="MakeFile.Python & C++ Programe Toturial">
+  <span class="title">MakeFile.Python & C++ Programe Toturial</span>
+</a></div>
+</div>
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/04/21/CPP_Python%20Code%20Inference/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">MakeFile.Python &amp; C++ Programe Toturial</span>
+                                    <span class="post-nav-item">Prev posts</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/04/21/The%20Satellite%20Imagery%20DataSet%20Toolkit/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Natural language models and strategic command systems</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
+    </div>
+    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://example.example.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">LandSlide Prediction Algorithm</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LandSlide-Prediction-Algorithm"><span class="nav-text">LandSlide Prediction Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Predict-performance"><span class="nav-text">Predict performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-Structure-amp-Data-Process"><span class="nav-text">Network Structure &amp; Data Process</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Train-amp-Run"><span class="nav-text">Train &amp; Run</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data"><span class="nav-text">Data:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-text">Reference:</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Tom Winshare</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        VISITOR COUNT&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        TOTAL PAGE VIEWS&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a></span>
+                <br>
+            <span class="theme-version-container">THEME&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.2</a>
+        </div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+    <div id="aplayer"></div>
+
+<script src="/js/libs/APlayer.min.js"></script>
+
+
+<script src="/js/plugins/aplayer.js"></script>
+
+
+</body>
+</html>

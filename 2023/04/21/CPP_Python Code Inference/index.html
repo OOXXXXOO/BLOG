@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="Tom Winshare">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://winshare.tech/2023/04/21/cpp_python code inference/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="对于习惯IDE的Programmer来说 底层实际上是非常陌生的领域 然而下探到C++编译机制，对于一个合格的工程师又是非常有必要掌握的技术因此  本篇文章将讲解利用MakeFile 来实现Python C++混编的目的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MakeFile.Python &amp; C++ Programe Toturial">
+<meta property="og:url" content="http://winshare.tech/2023/04/21/CPP_Python%20Code%20Inference/index.html">
+<meta property="og:site_name" content="Tom Winshare Page">
+<meta property="og:description" content="对于习惯IDE的Programmer来说 底层实际上是非常陌生的领域 然而下探到C++编译机制，对于一个合格的工程师又是非常有必要掌握的技术因此  本篇文章将讲解利用MakeFile 来实现Python C++混编的目的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4ece889e044de7f9c8de37222789cb40.jpeg">
+<meta property="article:published_time" content="2023-04-20T18:23:17.911Z">
+<meta property="article:modified_time" content="2023-04-20T18:26:00.288Z">
+<meta property="article:author" content="Tom Winshare">
+<meta property="article:tag" content="Programe">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/4ece889e044de7f9c8de37222789cb40.jpeg">
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            MakeFile.Python &amp; C++ Programe Toturial -
+        
+        Tom Winshare Page
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/assets/fonts.css">
+
+    <!--- Font Part-->
+    
+        <link href="" rel="stylesheet">
+    
+    
+    
+    
+
+    <!--- Inject Part-->
+    
+        
+            
+    
+            
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"winshare.tech","root":"/","language":"en"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":true,"list":[""]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":true,"title":"recommendation","limit":3,"placeholder":"/images/Winshare_draw_A_humanoid_robot_is_making_a_hello_gesture_with_i_8da0fa2b-c8a4-4136-813c-9861132dd0f6.png","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true},"home_banner":{"enable":true,"image":{"light":"/images/Winshare_draw_A_humanoid_robot_is_making_a_hello_gesture_with_i_8da0fa2b-c8a4-4136-813c-9861132dd0f6.png","dark":"/images/Winshare_draw_A_humanoid_robot_is_making_a_hello_gesture_with_i_707efcfd-2354-4ea3-83d5-2ba5ad2a1b8b.png"},"title":"Tom Winshare Page","subtitle":{"text":["Research about Perception","Research about GIS","Research about Robotic","Research about Natural Language Process","Research about Computer Graphic"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":null,"url":null},"social_links":{"enable":true,"links":{"github":"https://github.com/OOXXXXOO","instagram":null,"zhihu":null,"twitter":null,"email":"tanwenxuan@live.com"}}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":true,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.2","navbar":{"auto_hide":true,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Gallary":{"path":"/gallary","icon":"fa-regular fa-image"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Math":{"path":"/latex","icon":"fa-regular fa-calculator"},"Tags":{"icon":"fa-solid fa-tags","path":"/tags/"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/OOXXXXOO"}},"Links":{"icon":"fa-regular fa-link","submenus":{"HuggingFace":"https://huggingface.co/Winshare","CSDN":"https://blog.csdn.net/admintan?type=blog","GITHUB":"https://github.com/OOXXXXOO"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Tom Winshare Page" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Tom Winshare Page
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        HOME
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/gallary"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-image"></i>
+                                        
+                                        GALLARY
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        ARCHIVES
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/latex"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-calculator"></i>
+                                        
+                                        MATH
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/tags/"  >
+                                    
+                                        
+                                            <i class="fa-solid fa-tags"></i>
+                                        
+                                        TAGS
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">ME
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-link"></i>
+                                        
+                                        LINKS&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://huggingface.co/Winshare">HUGGINGFACE
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://blog.csdn.net/admintan?type=blog">CSDN
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                HOME
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/gallary"  >
+                             
+                                
+                                    <i class="fa-regular fa-image"></i>
+                                
+                                GALLARY
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                ARCHIVES
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/latex"  >
+                             
+                                
+                                    <i class="fa-regular fa-calculator"></i>
+                                
+                                MATH
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/tags/"  >
+                             
+                                
+                                    <i class="fa-solid fa-tags"></i>
+                                
+                                TAGS
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                ABOUT&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">ME</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB</a>
+                            </li>
+                        
+                    
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-link"></i>
+                                
+                                LINKS&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://huggingface.co/Winshare">HUGGINGFACE</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://blog.csdn.net/admintan?type=blog">CSDN</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/OOXXXXOO">GITHUB</a>
+                            </li>
+                        
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+             
+                <div class="article-title">         
+                    <img src="/images/C-Language2.png" alt="MakeFile.Python &amp; C++ Programe Toturial" />
+                    <h1 class="article-title-cover">MakeFile.Python &amp; C++ Programe Toturial</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Tom Winshare</span>
+                            
+                                <span class="author-label">Lv1</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-04-21 02:23:17</span>
+        <span class="mobile">2023-04-21 02:23</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-04-21 02:26</span>
+            <span class="mobile">2023-04-21 02:26</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/C/">C++</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/source/tags/Programe/">Programe</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/source/tags/C/">C++</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/source/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="MakeFile-Python-amp-C-混编教程-上"><a href="#MakeFile-Python-amp-C-混编教程-上" class="headerlink" title="MakeFile.Python &amp; C++ 混编教程 上"></a>MakeFile.Python &amp; C++ 混编教程 上</h1><p>对于习惯IDE的Programmer来说 底层实际上是非常陌生的领域 然而下探到C++编译机制，对于一个合格的工程师又是非常有必要掌握的技术因此  本篇文章将讲解利用MakeFile 来实现Python C++混编的目的</p>
+<p>首先不同平台的编译，存在着显著的差别：</p>
+<blockquote>
+<p>Linux&#x2F;UnixLike平台的动态链接库一般为.so为结尾（shared object）</p>
+<p>Windows平台的动态链接库一般为.dll为结尾（Dynamic Link Library ）</p>
+</blockquote>
+<h2 id="Linux-Part："><a href="#Linux-Part：" class="headerlink" title="Linux Part："></a>Linux Part：</h2><h3 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h3><p>在Linux中  主流编译器为Clang以及GNU（GCC，G++）<br>GCC中支持的语言常用的有<br>C、C++、Java、Object-C<br>结构类似于一个标准Unix编译器</p>
+<p>而Clang是支持C++，CObject-C，Object-C++语言的编译器前端<br>其底层采用了LLVM底层虚拟机，在编译Object-C时对比GCC快三倍</p>
+<p>总体上：</p>
+<ul>
+<li>GCC特性：</li>
+</ul>
+<p>除支持C&#x2F;C++&#x2F; Objective-C&#x2F;Objective-C++语言外，还是支持Java&#x2F;Ada&#x2F;Fortran&#x2F;Go等；当前的Clang的C++支持落后于GCC；支持更多平台；更流行，广泛使用，支持完备。</p>
+<ul>
+<li>Clang特性：</li>
+</ul>
+<p>编译速度快；内存占用小；兼容GCC；设计清晰简单、容易理解，易于扩展增强；基于库的模块化设计，易于IDE集成；出错提示更友好</p>
+<hr>
+<p>我们先以GCC为例讲解以下一个典型的C++编译指令是如何工作的</p>
+<h4 id="一个典型的Unix-like平台的-C-程序编译要经过哪些步骤？"><a href="#一个典型的Unix-like平台的-C-程序编译要经过哪些步骤？" class="headerlink" title="一个典型的Unix like平台的 C++程序编译要经过哪些步骤？"></a>一个典型的Unix like平台的 C++程序编译要经过哪些步骤？</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/img_convert/4ece889e044de7f9c8de37222789cb40.jpeg"
+                     
+                ></p>
+<p>(更详细的解释参照<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/csdn_violin/article/details/79430384" >C++编译过程 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，不再赘述)</p>
+<p>而一个 gcc –h显示的帮助信息<strong>最常用</strong>的部分如下：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-B &lt;directory&gt;           Add &lt;directory&gt; to the compiler<span class="string">&#x27;s search paths</span></span><br><span class="line"><span class="string">#添加编译器的搜索路径（例如头文件等）</span></span><br><span class="line"><span class="string">-v                       Display the programs invoked by the compiler</span></span><br><span class="line"><span class="string">#显示被编译器调用的程序</span></span><br><span class="line"><span class="string">-###                     Like -v but options quoted and commands not executed</span></span><br><span class="line"><span class="string">-E                       Preprocess only; do not compile, assemble or link</span></span><br><span class="line"><span class="string">#只预处理不编译汇编或者链接</span></span><br><span class="line"><span class="string">-S                       Compile only; do not assemble or link</span></span><br><span class="line"><span class="string">#只编译不汇编和链接</span></span><br><span class="line"><span class="string">-c                       Compile and assemble, but do not link</span></span><br><span class="line"><span class="string">#编译和汇编，不连接</span></span><br><span class="line"><span class="string">-o &lt;file&gt;                Place the output into &lt;file&gt;</span></span><br><span class="line"><span class="string">#输出到文件</span></span><br><span class="line"><span class="string">-pie                     Create a position independent executable</span></span><br><span class="line"><span class="string">#创建与位置无关的可执行文件</span></span><br><span class="line"><span class="string">-shared                  Create a shared library</span></span><br><span class="line"><span class="string">#创建一个共享库</span></span><br></pre></td></tr></table></figure></div>
+<p>我们来尝试编译一个helloworld</p>
+<blockquote>
+<p>main.cpp</p>
+</blockquote>
+<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;c++ is best language&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>对于这样一个非常基础的没有额外依赖的cpp文件来说，编译过程当然也相当简单。</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -c main.cpp</span><br><span class="line"><span class="comment">#只编译和汇编main.cpp不链接生成main.o的目标代码文件</span></span><br></pre></td></tr></table></figure></div>
+<p>如果我们还想执行这个代码就要生成可执行文件</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">g++ -o main.out main.o</span><br><span class="line"><span class="comment">#输出到.out可执行文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#也可以合并执行</span></span><br><span class="line">g++ -o hello.out hello.cpp</span><br><span class="line"><span class="comment">#直接编译并输出到可执行文件</span></span><br></pre></td></tr></table></figure></div>
+<p>则.&#x2F;xx.out 就可以运行编译完成的可执行文件了<br>但是这个并不是典型的应用场景  我们用下面的三个代码来模拟日常更常用的C++工作模式</p>
+<blockquote>
+<p>head.h</p>
+</blockquote>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> HEAD_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> HEAD_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;head.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">private:</span><br><span class="line">    <span class="comment">/* data */</span></span><br><span class="line">public:</span><br><span class="line"><span class="type">void</span> <span class="title function_">Say</span><span class="params">()</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">SaywithPython</span><span class="params">()</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>function.cpp</p>
+</blockquote>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;head.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Human::Say</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Im Human ,You are shit&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Human::SaywithPython</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Python is best language&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>main.cpp</p>
+</blockquote>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;head.h&quot;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;C++ is best language&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    Human Jarvis;</span><br><span class="line">    Jarvis.Say();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这一小段程序包含了非常多的技巧</p>
+<p>首先定义了head以及function本地头文件和实现，在cpp文件中实现了<br>两个公开的方法</p>
+<p>在main中又调用了实例化对象中的该方法</p>
+<p>由于涉及了多个文件因此我们必须有一种方法来指定编译器的行为——MakeFile</p>
+<div class="highlight-container" data-rel="Makefile"><figure class="iseeu highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">build : main.o function.o</span><br><span class="line">	g++ -o build main.o function.o</span><br><span class="line">main.o : main.cpp head.h</span><br><span class="line">	g++ -g -c main.cpp</span><br><span class="line">function.o : head.h function.cpp</span><br><span class="line">	g++ -g -c function.cpp</span><br><span class="line">clean :</span><br><span class="line">	rm main.o function.o build</span><br><span class="line"><span class="comment">#pylib : function.cpp</span></span><br><span class="line"><span class="comment">#	g++ -o pylib.so -shared -fPIC function.cpp</span></span><br></pre></td></tr></table></figure></div>
+<p>其中整个的格式为：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target ... : prerequisites ...</span><br><span class="line">　　<span class="built_in">command</span>    <span class="comment">#tab</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>target为目标文件</p>
+</li>
+<li><p>prerequisites为生成目标文件所需的文件</p>
+</li>
+<li><p>command为编译该目标文件所需的指令</p>
+</li>
+</ul>
+<p>所以目前我们可以按照之前的C++编译流程图 整理出的依赖顺序为：<br>1.编译function.cpp依赖于head.h 生成function.o 即：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function.o : head.h function.cpp</span><br><span class="line">	g++ -g -c function.cpp</span><br></pre></td></tr></table></figure></div>
+<p>2.编译main.cpp依赖于head.h 生成 main.o 即：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main.o : main.cpp head.h</span><br><span class="line">	g++ -g -c main.cpp</span><br></pre></td></tr></table></figure></div>
+
+<p>3.编译可执行文件依赖于main.o function.o 生成指定的可执行文件（build）即：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">build : main.o function.o</span><br><span class="line">	g++ -o build main.o function.o</span><br></pre></td></tr></table></figure></div>
+<p>具体在执行过程中则遵循依赖，书写则从可执行文件开始（如果确实要生成可执行文件的话）</p>
+<p>至此命令行中输入</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure></div>
+<p>就可以进行编译啦</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#结果如同</span></span><br><span class="line">g++ -g -c main.cpp</span><br><span class="line">g++ -g -c function.cpp</span><br><span class="line">g++ -o build main.o function.o</span><br></pre></td></tr></table></figure></div>
+<p>生成了build可执行文件<br>结果：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c++ is best language</span><br><span class="line"></span><br><span class="line">Im Human ,You are shit</span><br></pre></td></tr></table></figure></div>
+<p>通过这一步我们解决了C++编译的问题，那我们怎么解决Python和C++的混编呢？</p>
+<p>重新编写</p>
+<blockquote>
+<p>function.cpp</p>
+</blockquote>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;head.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">Human::Say</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Im Human ,You are shit&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Human::SaywithPython</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Python is best language&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span>&#123;</span><br><span class="line">    Human pythonman;</span><br><span class="line">    <span class="type">void</span> <span class="title function_">SaywithPython</span><span class="params">()</span>&#123;</span><br><span class="line">        pythonman.SaywithPython();</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;C++ IS SHIT!!&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="通常来说，在模块的头文件中对本模块提供给其他模块引用的函数和全局变量以关键字extern声明。"><a href="#通常来说，在模块的头文件中对本模块提供给其他模块引用的函数和全局变量以关键字extern声明。" class="headerlink" title="通常来说，在模块的头文件中对本模块提供给其他模块引用的函数和全局变量以关键字extern声明。"></a>通常来说，在模块的头文件中对本模块提供给其他模块引用的函数和全局变量以关键字extern声明。</h5><p>Tips:</p>
+<ul>
+<li><p>extern是C&#x2F;C++语言中表明函数和全局变量的作用范围的关键字，该关键字告诉编译器，其申明的函数和变量可以在本模块或其他模块中使用。</p>
+</li>
+<li><p>被extern “C”修饰的变量和函数是按照C语言方式进行编译和链接的</p>
+</li>
+<li><p>extern int a; 仅仅是一个变量的声明，其并不是在定义变量a，并未为a分配空间。变量a在所有模块中作为一种全局变量只能被定义一次，否则会出错。</p>
+</li>
+<li><p>extern对应的关键字是static，static表明变量或者函数只能在本模块中使用，因此，被static修饰的变量或者函数不可能被extern C修饰。</p>
+</li>
+</ul>
+<p>这一步的目的是通过MakeFile生成动态链接库，在Unix like系统中一般为.so文件：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">build : main.o function.o</span><br><span class="line">	g++ -o build main.o function.o</span><br><span class="line">main.o : main.cpp head.h</span><br><span class="line">	g++ -g -c main.cpp</span><br><span class="line">function.o : head.h function.cpp</span><br><span class="line">	g++ -g -c function.cpp</span><br><span class="line">clean :</span><br><span class="line">	<span class="built_in">rm</span> main.o function.o build</span><br><span class="line"></span><br><span class="line">pylib : function.cpp</span><br><span class="line">	g++ -o pylib.so -shared -fPIC function.cpp</span><br><span class="line"><span class="comment">#通过 -shared 生成 .so文件</span></span><br></pre></td></tr></table></figure></div>
+
+<p>通过</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make pylib</span><br></pre></td></tr></table></figure></div>
+<p>就可以生成pylib.so文件<br>此时我们开始建立python脚本</p>
+<blockquote>
+<p>main.py</p>
+</blockquote>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line">ll=ctypes.cdll.LoadLibrary</span><br><span class="line"><span class="comment">#载入动态链接库</span></span><br><span class="line">lib=ll(<span class="string">&#x27;/home/winshare/Leetcode/MakeFileTutorial/pylib.so&#x27;</span>)</span><br><span class="line"><span class="comment">#ll(&#x27;动态链接库文件的地址&#x27;)</span></span><br><span class="line">lib.SaywithPython()</span><br></pre></td></tr></table></figure></div>
+<p>输出：</p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python is best language</span><br><span class="line">C++ IS SHIT!!</span><br></pre></td></tr></table></figure></div>
+<p>至此  我们完成了Python调用C++的实践</p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> MakeFile.Python &amp; C++ Programe Toturial</li>
+        <li><strong>Author:</strong> Tom Winshare</li>
+        <li><strong>Created at:</strong> 2023-04-21 02:23:17</li>
+        
+            <li>
+                <strong>Updated at:</strong> 2023-04-21 02:26:00
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://winshare.tech/2023/04/21/CPP_Python Code Inference/
+        </li>
+        <li>
+            <strong>License:</strong> This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>.
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/source/tags/Programe/">#Programe</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/source/tags/C/">#C++</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/source/tags/Python/">#Python</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            <div class="recommended-article">
+  <div class="recommended-article-header">
+    <i aria-hidden="true"></i><span>recommendation</span>
+  </div>
+  <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/04/19/Natural language models and strategic command systems/" title="Natural language models and strategic command systems" rel="bookmark">
+  <img src="/images/v2-3ac1ca84e58757cf9ae28c83b053f08d_1440w.jpg" alt="Natural language models and strategic command systems">
+  <span class="title">Natural language models and strategic command systems</span>
+</a><a class="recommended-article-item" href="/2023/04/21/Landslide Prediction System/" title="LandSlide Prediction Algorithm" rel="bookmark">
+  <img src="/images/titile.png" alt="LandSlide Prediction Algorithm">
+  <span class="title">LandSlide Prediction Algorithm</span>
+</a><a class="recommended-article-item" href="/2023/04/21/The Satellite Imagery DataSet Toolkit/" title="Natural language models and strategic command systems" rel="bookmark">
+  <img src="/images/remote.jpg" alt="Natural language models and strategic command systems">
+  <span class="title">Natural language models and strategic command systems</span>
+</a></div>
+</div>
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/04/21/Landslide%20Prediction%20System/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">LandSlide Prediction Algorithm</span>
+                                    <span class="post-nav-item">Next posts</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;Comments
+    </div>
+    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://example.example.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">On this page</div>
+        <div class="page-title">MakeFile.Python &amp; C++ Programe Toturial</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MakeFile-Python-amp-C-%E6%B7%B7%E7%BC%96%E6%95%99%E7%A8%8B-%E4%B8%8A"><span class="nav-text">MakeFile.Python &amp; C++ 混编教程 上</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-Part%EF%BC%9A"><span class="nav-text">Linux Part：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-text">编译器</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+            
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Tom Winshare</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        VISITOR COUNT&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        TOTAL PAGE VIEWS&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a></span>
+                <br>
+            <span class="theme-version-container">THEME&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.2</a>
+        </div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+    <div id="aplayer"></div>
+
+<script src="/js/libs/APlayer.min.js"></script>
+
+
+<script src="/js/plugins/aplayer.js"></script>
+
+
+</body>
+</html>
