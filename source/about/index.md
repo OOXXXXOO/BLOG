@@ -1,19 +1,26 @@
 ---
-title: Tom Winshare 谭文轩
+title: Introduction
 date: 2023-04-17 18:48:35
 ---
 
-# OBJECTIVE 
+# Introduction
 
->During my undergrad years, I participated in the ACM algorithm training camp in my freshman year. However, influenced by the movie Iron Man, I became deeply interested in developing an advanced HCI system. I first delved into gesture recognition technology and, with the help of a sensor, completed a national-level college student innovation and entrepreneurship project, winning a series of awards. In my junior year, I began leading a research group of ten people, expanding our research areas to include VR, AR, HoloLens (MR), and 3D engines (CG). Eventually, the research group received national funding to establish an HCI lab, which continues to produce project results annually. At the end of my undergrad studies, I received a recommendation from Andrew Butz, the Dean of the CS Department at the University of Munich, to pursue a master's degree at TUM. However, I declined for personal reasons.
-
->In the first few years of my career, I focused on the application of computational geometry, deep neural networks, and CV in the field of remote sensing, and gained extensive experience in GIS system integration and development. In my spare time, I developed an open-source project called Darth, a PyPI package that supports global data sampling. This project helped my first company train one of the best remote sensing building recognition models in China.
-
->In recent years, I realized the intrinsic logic of CV development and shifted my focus to autonomous driving, accumulating a wealth of experience in L2-level perception fusion. The publication of GPT-related papers made me aware of the immense potential of large models in command orchestration, so I began adapting to this change and switched to the field of robotics. In practice, I learned about relevant architectural design and eventually explored a prototype of a natural language-based robot control framework. Thus, after years of technical accumulation, I have gained substantial experience in CV algorithms, GIS algorithm development, and autonomous driving perception fusion. I am extremely passionate about foundational technologies related to perception, multimodality, and large models, and I am enthusiastic about the fields of autonomous driving and robotics.
+<img src="/images/Subject.png" width="25%" align=left>
 
 
+During my undergrad years,I participated in the ACM algorithm training camp in my freshman year. However, influenced by the movie Iron Man, I became deeply interested in developing an advanced HCI system. I first delved into gesture recognition technology and, with the help of a sensor, completed a national-level college student innovation and entrepreneurship project, winning a series of awards. In my junior year, I began leading a research group of ten people, expanding our research areas to include [VR](https://v.youku.com/v_show/id_XMjY5MjU1OTY1Ng==.html), [AR](https://v.youku.com/v_show/id_XMTUwNDM2ODk0OA==.html), HoloLens (MR), and 3D engines (CG). Eventually, the research group received national funding to establish an HCI lab, which continues to produce project results annually. At the end of my undergrad studies, I received a recommendation from [Andreas Butz](http://www.medien.ifi.lmu.de/team/andreas.butz/), the Dean of the CS Department at the University of Munich, to pursue a master's degree at [TUM](https://www.tum.de/en/). However, I declined for personal reasons.
 
+****
+In the first few years of my career, I focused on the application of computational geometry, deep neural networks, and CV in the field of remote sensing, and gained extensive experience in GIS system integration and development. In my spare time, I developed an open-source project called [Darth(PyPI Package)](https://pypi.org/project/d-arth/) that supports global data sampling. This project helped my first company train one of the best remote sensing building recognition models in China.
+****
+In recent years, I realized the intrinsic logic of CV development and shifted my focus to autonomous driving, accumulating a wealth of experience in L2-level perception fusion. The publication of GPT-related papers made me aware of the immense potential of large models in command orchestration, so I began adapting to this change and switched to the field of robotics. In practice, I learned about relevant architectural design and eventually explored a prototype of a natural language-based robot control framework. Thus, after years of technical accumulation, I have gained substantial experience in CV algorithms, GIS algorithm development, and autonomous driving perception fusion. I am extremely passionate about foundational technologies related to perception, multimodality, and large models, and I am enthusiastic about the fields of autonomous driving and robotics.
 
+****
+
+# Contact information
+* Tel：+8613146420628
+* E-mail: tanwenxuan@live.com
+* E-mail: tomwinshare@gmail.com
 
 
 
@@ -102,6 +109,9 @@ https://github.com/OOXXXXOO/WSNet
 ### The Satellite Imagery DataSet Toolkit:
  https://github.com/OOXXXXOO/DARTH (Pip Package: https://pypi.org/project/d-arth/)
 
+### LandSlide Prediction Algorithm
+
+https://github.com/OOXXXXOO/Efficient-landslide
 
 # EDUCATION 
 * Bachelor of Software Engineering | 2013 - 2017 Southwest Minzu University | China-Chengdu

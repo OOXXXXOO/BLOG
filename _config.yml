@@ -9,7 +9,7 @@ description: 'The Personal Page of Tom Winshare'
 keywords:
 author: Tom Winshare
 language: en
-timezone: 'UTM+8'
+timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -104,7 +104,8 @@ theme: redefine
 deploy:
   type: git
   repo: https://github.com/OOXXXXOO/BLOG.git
-  branch: develop
+  branch: publish
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
 
 
 
